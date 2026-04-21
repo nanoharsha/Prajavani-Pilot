@@ -928,7 +928,7 @@ function WayForward() {
         <div style={{ background:C.navy, borderRadius:6, padding:'36px 44px', display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(260px,1fr))', gap:36 }}>
           <div>
             <div style={{ fontFamily:"'Libre Baskerville',serif", fontSize:20, color:C.white, marginBottom:10 }}>The ask to government</div>
-            <div style={{ fontFamily:"'Source Sans 3',sans-serif", fontSize:15, color:'rgba(255,255,255,0.7)', lineHeight:1.7 }}>Issue a formal Government Order recognising SSAAT and civil society as official verification partners in the grievance redress system. This is the single step that would institutionalise the accountability layer that makes this model work.</div>
+            <div style={{ fontFamily:"'Source Sans 3',sans-serif", fontSize:15, color:'rgba(255,255,255,0.7)', lineHeight:1.7 }}>Issue a Government Order to formally institutionalise Prajavani with clear roles, decentralised structures, defined timelines, and provisions for appeal and automatic escalation.</div>
           </div>
           <div>
             <div style={{ fontFamily:"'Libre Baskerville',serif", fontSize:20, color:C.white, marginBottom:10 }}>The replication opportunity</div>
