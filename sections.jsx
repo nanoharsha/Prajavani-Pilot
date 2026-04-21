@@ -141,7 +141,7 @@ function PilotJourney() {
             ))}
           </div>
           <div>
-            <PhotoPlaceholder label="Photo: Pilot launch ceremony, 27 January 2025, Adilabad" aspect="4/3" />
+            <img src="images/Complaint%20resolved%20in%20PH.jpeg" alt="Citizen Satisfied at a Public Hearing, Tamsi, Adilabad"style={{ width:'100%', borderRadius:4, objectFit:'cover', aspectRatio:'4/3', display:'block' }} />
           </div>
         </div>
         <div style={{ background: C.navy, borderRadius: 6, padding: '36px 40px' }}>
