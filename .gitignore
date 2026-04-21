@@ -1,0 +1,24 @@
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+ehthumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Claude local state
+.claude/
+
+# Node (not used, but standard)
+node_modules/
+
+# Temp
+*.tmp
+*.log
+
+# Source materials — contain personal data / large binaries, not for public repo
+uploads/
