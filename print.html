@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Adilabad Decentralised Prajavani — Evidence from the Pilot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── RESET & BASE ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      color: #1a1814;
+      background: #fff;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    h1,h2,h3,h4 { font-family: 'Libre Baskerville', serif; }
+    ul { list-style: disc; }
+
+    /* ── PAGE SETUP ───────────────────────────────────── */
+    @page {
+      size: A4 portrait;
+      margin: 14mm 14mm 14mm 14mm;
+    }
+
+    /* ── PAGE BREAKS ──────────────────────────────────── */
+    .page { break-before: page; }
+    .no-break { break-inside: avoid; }
+    .page:first-child { break-before: avoid; }
+
+    /* ── SECTION WRAPPER ──────────────────────────────── */
+    .section { padding: 28px 0 20px; }
+    .eyebrow {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 9px; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: #c47d2e; margin-bottom: 8px;
+    }
+    .section-title {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 22px; font-weight: 700; color: #0d2137;
+      line-height: 1.2; margin-bottom: 8px;
+    }
+    .section-lead {
+      font-size: 13px; color: #4a4640; line-height: 1.65;
+      max-width: 580px; margin-bottom: 20px;
+    }
+
+    /* ── COVER PAGE ───────────────────────────────────── */
+    #cover {
+      background: #0d2137;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: space-between;
+      padding: 48px 40px 32px;
+      break-before: avoid;
+    }
+    .cover-top {}
+    .cover-rule { height: 2px; width: 40px; background: #c47d2e; margin-bottom: 24px; }
+    .cover-provenance {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 40px;
+    }
+    .cover-h1 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 44px; font-weight: 700; color: #fff;
+      line-height: 1.1; margin-bottom: 16px;
+    }
+    .cover-sub {
+      font-size: 16px; color: rgba(255,255,255,0.65);
+      line-height: 1.6; max-width: 520px; margin-bottom: 10px;
+    }
+    .cover-partner {
+      font-size: 11px; color: rgba(255,255,255,0.3);
+      line-height: 1.6; margin-bottom: 40px;
+    }
+
+    /* Stat strip on cover */
+    .stat-strip {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 3px; overflow: hidden;
+      margin-bottom: 32px;
+    }
+    .stat-cell {
+      background: #0d2137;
+      padding: 16px 14px;
+    }
+    .stat-num {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 26px; font-weight: 700; color: #f0a84a;
+    }
+    .stat-label {
+      font-size: 9px; color: rgba(255,255,255,0.45); margin-top: 3px;
+    }
+
+    .cover-bottom {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 16px;
+      display: flex; gap: 24px; flex-wrap: wrap;
+    }
+    .cover-meta {
+      font-size: 10px; color: rgba(255,255,255,0.25);
+    }
+
+    /* ── TABLES ───────────────────────────────────────── */
+    table { width: 100%; border-collapse: collapse; font-size: 11px; }
+    thead tr { background: #0d2137; }
+    thead th {
+      padding: 9px 12px; text-align: left;
+      color: #fff; font-weight: 600; font-size: 10px;
+    }
+    tbody tr:nth-child(even) { background: #f7f4ef; }
+    tbody tr:nth-child(odd) { background: #fff; }
+    td { padding: 8px 12px; color: #1a1814; }
+    .col-bad { color: #c0392b; }
+    .col-good { color: #2a706a; font-weight: 600; }
+    .col-amber-h { color: #f4a261; }
+    .col-teal-h  { color: #52d9d1; }
+
+    /* ── CARDS GRID ───────────────────────────────────── */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+    .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; }
+
+    .card {
+      border: 1px solid #d8d4cc;
+      border-radius: 3px; padding: 14px 16px;
+      break-inside: avoid;
+    }
+    .card-top { border-top: 3px solid #c47d2e; }
+    .card-teal { border-left: 3px solid #2a706a; }
+    .card-mid { border: 1px solid #d8d4cc; }
+
+    .card-eyebrow {
+      font-size: 8px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #c0392b; margin-bottom: 5px;
+    }
+    .card-title {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 12px; font-weight: 700; color: #0d2137; margin-bottom: 5px;
+    }
+    .card-body { font-size: 11px; color: #4a4640; line-height: 1.55; }
+
+    /* ── NAVY BLOCK ───────────────────────────────────── */
+    .navy-block {
+      background: #0d2137;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      border-radius: 4px; padding: 24px 28px; break-inside: avoid;
+    }
+    .navy-block .block-title {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 15px; color: #fff; margin-bottom: 8px;
+    }
+    .navy-block .block-body {
+      font-size: 12px; color: rgba(255,255,255,0.7); line-height: 1.6;
+    }
+
+    /* ── TIMELINE ─────────────────────────────────────── */
+    .timeline { position: relative; padding-left: 100px; }
+    .tl-line {
+      position: absolute; left: 80px; top: 4px; bottom: 4px;
+      width: 1px; background: #d8d4cc;
+    }
+    .tl-item {
+      position: relative; margin-bottom: 14px;
+      break-inside: avoid;
+    }
+    .tl-date {
+      position: absolute; left: -100px; width: 72px;
+      text-align: right; font-size: 10px; font-weight: 700;
+      color: #7a7570; padding-top: 2px;
+    }
+    .tl-date.milestone { color: #c47d2e; }
+    .tl-dot {
+      position: absolute; left: -23px; top: 3px;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: #d8d4cc; border: 2px solid #edeae4;
+      z-index: 1;
+    }
+    .tl-dot.milestone { background: #c47d2e; border-color: #c47d2e; }
+    .tl-text {
+      font-size: 12px; color: #4a4640; line-height: 1.55;
+      padding: 5px 10px;
+    }
+    .tl-text.milestone {
+      background: rgba(196,125,46,0.07);
+      border-left: 2px solid #c47d2e;
+    }
+
+    /* ── SCALE GRID ───────────────────────────────────── */
+    .scale-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+    .scale-num {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 26px; font-weight: 700; color: #f0a84a;
+    }
+    .scale-lbl { font-size: 9px; color: rgba(255,255,255,0.55); margin-top: 2px; }
+
+    /* ── FLOW DIAGRAM ─────────────────────────────────── */
+    .flow {
+      display: flex; align-items: center;
+      background: #0d2137;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      border-radius: 3px; padding: 14px 20px;
+      gap: 0; margin-bottom: 14px;
+    }
+    .flow-step {
+      background: #c47d2e; color: #0d2137;
+      padding: 7px 14px; border-radius: 3px;
+      font-size: 10px; font-weight: 700; white-space: nowrap;
+    }
+    .flow-step.start { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.65); }
+    .flow-arrow { color: rgba(240,168,74,0.5); font-size: 14px; padding: 0 3px; }
+
+    /* ── CODE BADGE ───────────────────────────────────── */
+    .code-badge {
+      display: inline-block;
+      font-size: 8px; font-weight: 700; letter-spacing: 0.1em;
+      background: rgba(42,112,106,0.12); color: #2a706a;
+      padding: 2px 6px; border-radius: 2px; margin-bottom: 6px;
+    }
+    .why-label {
+      font-size: 8px; font-weight: 700; color: #c47d2e;
+      text-transform: uppercase; letter-spacing: 0.08em;
+    }
+
+    /* ── BAR ──────────────────────────────────────────── */
+    .bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .bar-label { font-size: 11px; color: #4a4640; min-width: 180px; }
+    .bar-track { flex-grow: 1; background: #edeae4; border-radius: 3px; height: 7px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 3px; }
+    .bar-pct { font-size: 10px; font-weight: 700; min-width: 32px; text-align: right; }
+
+    /* ── STATUS BADGE ─────────────────────────────────── */
+    .badge {
+      display: inline-block; padding: 2px 6px; border-radius: 2px;
+      font-size: 9px; font-weight: 700;
+    }
+    .badge-strong { background: rgba(42,112,106,0.15); color: #2a706a; }
+    .badge-low    { background: rgba(196,125,46,0.15); color: #c47d2e; }
+    .badge-crit   { background: rgba(192,57,43,0.15);  color: #c0392b; }
+
+    /* ── INSIGHT ITEMS ────────────────────────────────── */
+    .insight-item { display: flex; gap: 14px; margin-bottom: 12px; break-inside: avoid; }
+    .insight-num {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 24px; font-weight: 700; color: #edeae4;
+      flex-shrink: 0; line-height: 1; min-width: 28px;
+    }
+    .insight-title {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 13px; font-weight: 700; color: #0d2137; margin-bottom: 4px;
+    }
+    .insight-body { font-size: 11px; color: #4a4640; line-height: 1.55; }
+
+    /* ── CASE CARDS ───────────────────────────────────── */
+    .case-card {
+      border: 1px solid #d8d4cc; border-radius: 3px;
+      padding: 14px 16px; break-inside: avoid; margin-bottom: 10px;
+    }
+    .case-header { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
+    .case-resolved   { background: rgba(42,112,106,0.12); color: #2a706a; }
+    .case-unresolved { background: rgba(192,57,43,0.1); color: #c0392b; }
+    .case-partial    { background: rgba(196,125,46,0.12); color: #c47d2e; }
+    .case-label { font-size: 8px; font-weight: 700; padding: 2px 6px; border-radius: 2px; }
+    .case-section-label { font-size: 9px; font-weight: 700; color: #7a7570; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 3px; }
+    .case-text { font-size: 11px; color: #4a4640; line-height: 1.55; }
+    .case-quote {
+      background: #0d2137;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      border-radius: 3px; padding: 12px 14px; margin-top: 8px;
+    }
+    .case-quote-mark { font-family: 'Libre Baskerville', serif; font-size: 22px; color: #f0a84a; line-height: 1; }
+    .case-quote-text { font-family: 'Libre Baskerville', serif; font-size: 11px; color: #fff; font-style: italic; line-height: 1.5; }
+    .case-quote-attr { font-size: 9px; color: rgba(255,255,255,0.35); margin-top: 6px; }
+
+    /* ── REC CARD ─────────────────────────────────────── */
+    .rec-card { border: 1px solid #d8d4cc; border-radius: 3px; padding: 14px 16px; break-inside: avoid; }
+    .rec-title { font-family: 'Libre Baskerville', serif; font-size: 13px; font-weight: 700; color: #0d2137; }
+    .rec-priority {
+      font-size: 8px; font-weight: 700; letter-spacing: 0.1em;
+      padding: 2px 6px; border-radius: 2px; text-transform: uppercase;
+    }
+    .pri-high  { background: rgba(196,125,46,0.15); color: #c47d2e; }
+    .pri-crit  { background: rgba(192,57,43,0.12); color: #c0392b; }
+    .pri-med   { background: rgba(42,112,106,0.12); color: #2a706a; }
+    .rec-list  { padding-left: 14px; margin-top: 8px; }
+    .rec-list li { font-size: 11px; color: #4a4640; line-height: 1.55; margin-bottom: 4px; }
+
+    /* ── PAGE HEADER (running) ────────────────────────── */
+    .page-header {
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid #d8d4cc; padding-bottom: 10px; margin-bottom: 18px;
+    }
+    .page-header-title {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #7a7570;
+    }
+    .page-header-logo {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 9px; font-weight: 700; color: #0d2137;
+    }
+    .page-header-logo span { color: #c47d2e; }
+
+    /* ── DOUBLE-COL LAYOUT ────────────────────────────── */
+    .col-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .col-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+
+    /* ── RESOURCE CARDS ───────────────────────────────── */
+    .res-card { border: 1px solid #d8d4cc; border-radius: 3px; padding: 12px 14px; break-inside: avoid; }
+    .res-type { font-size: 8px; font-weight: 700; color: #7a7570; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 5px; }
+    .res-title { font-family: 'Libre Baskerville', serif; font-size: 13px; font-weight: 700; color: #0d2137; margin-bottom: 4px; }
+    .res-desc { font-size: 11px; color: #4a4640; line-height: 1.5; }
+    .res-primary { background: #0d2137; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .res-primary .res-type { color: #f0a84a; }
+    .res-primary .res-title { color: #fff; }
+    .res-primary .res-desc { color: rgba(255,255,255,0.6); }
+
+    /* ── PRINT HIDE ───────────────────────────────────── */
+    @media screen {
+      body { max-width: 860px; margin: 0 auto; padding: 0; }
+      #cover { min-height: 100vh; }
+    }
+    @media print {
+      body { background: #fff; }
+    }
+
+    /* DB sub-section header */
+    .db-section-head {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 13px; font-weight: 700; color: #0d2137;
+      border-bottom: 1px solid #d8d4cc; padding-bottom: 6px; margin: 18px 0 10px;
+    }
+    .db-section-head:first-child { margin-top: 0; }
+
+    .info-box {
+      border: 1px solid rgba(196,125,46,0.4);
+      background: rgba(196,125,46,0.06);
+      border-radius: 3px; padding: 10px 14px; margin-bottom: 12px;
+      font-size: 11px; color: #4a4640; line-height: 1.55; break-inside: avoid;
+    }
+    .methodological-box {
+      border: 1px solid rgba(42,112,106,0.4);
+      background: rgba(42,112,106,0.05);
+      border-radius: 3px; padding: 10px 14px; margin-top: 12px;
+      font-size: 11px; color: #4a4640; line-height: 1.55; break-inside: avoid;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 1 — COVER
+     ══════════════════════════════════════════════════════════ -->
+<div id="cover">
+  <div class="cover-top">
+    <div class="cover-rule"></div>
+    <div class="cover-provenance">A pilot from Telangana, India · Adilabad District</div>
+    <h1 class="cover-h1">Adilabad<br/>Decentralised<br/>Prajavani</h1>
+    <p class="cover-sub">Evidence from the Pilot: A collaborative model demonstrating decentralised, transparent, and participatory grievance redress.</p>
+    <p class="cover-partner">A collaborative initiative of the Adilabad District Administration, SSAAT, Kisan Mitra, and civil society partners, facilitated by SAFAR India</p>
+
+    <div class="stat-strip">
+      <div class="stat-cell"><div class="stat-num">12,741</div><div class="stat-label">Grievances filed</div></div>
+      <div class="stat-cell"><div class="stat-num">7,998</div><div class="stat-label">ATRs filed</div></div>
+      <div class="stat-cell"><div class="stat-num">82</div><div class="stat-label">Public hearings</div></div>
+      <div class="stat-cell"><div class="stat-num">55%</div><div class="stat-label">Complainant participation</div></div>
+      <div class="stat-cell"><div class="stat-num">16</div><div class="stat-label">Mandals covered</div></div>
+      <div class="stat-cell"><div class="stat-num">15 mo</div><div class="stat-label">Pilot duration</div></div>
+    </div>
+  </div>
+
+  <div class="cover-bottom">
+    <span class="cover-meta">Grounded in Articles 14, 21 &amp; 38 of the Indian Constitution</span>
+    <span class="cover-meta">Jan 2025 – Apr 2026</span>
+    <span class="cover-meta">Data cut-off: 31 January 2026</span>
+    <span class="cover-meta">Published May 2026</span>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 2 — WHY CHANGE
+     ══════════════════════════════════════════════════════════ -->
+<div class="page" style="padding: 0;">
+  <div class="page-header">
+    <span class="page-header-title">Why Change Was Needed</span>
+    <span class="page-header-logo">Adilabad <span>Prajavani</span></span>
+  </div>
+
+  <div class="eyebrow">The Problem</div>
+  <h2 class="section-title">Why the existing system needed reform</h2>
+  <p class="section-lead">Existing grievance redress systems — CM Prajavani, CPGRAMS, District portals — share structural limitations that undermine access and accountability for citizens in rural Telangana.</p>
+
+  <div class="grid-3" style="margin-bottom:18px;">
+    <div class="card card-top no-break">
+      <div class="card-eyebrow">Limitation</div>
+      <div class="card-title">Centralised filing only</div>
+      <div class="card-body">Citizens must travel to Hyderabad — hundreds of kilometres — to register a grievance at CM Prajavani.</div>
+    </div>
+    <div class="card card-top no-break">
+      <div class="card-eyebrow">Limitation</div>
+      <div class="card-title">No acknowledgement receipt</div>
+      <div class="card-body">No dated proof of filing. Citizens have no record that their complaint was received.</div>
+    </div>
+    <div class="card card-top no-break">
+      <div class="card-eyebrow">Limitation</div>
+      <div class="card-title">No status tracking</div>
+      <div class="card-body">Once filed, there is no way to check what happened. Officers face no accountability for delays.</div>
+    </div>
+    <div class="card card-top no-break">
+      <div class="card-eyebrow">Limitation</div>
+      <div class="card-title">No public hearings</div>
+      <div class="card-body">Grievances are processed invisibly, without any collective accountability forum.</div>
+    </div>
+    <div class="card card-top no-break">
+      <div class="card-eyebrow">Limitation</div>
+      <div class="card-title">Self-reported resolution</div>
+      <div class="card-body">CM Prajavani reports 74% resolved — without independent verification, disposal is mistaken for resolution.</div>
+    </div>
+    <div class="card card-top no-break">
+      <div class="card-eyebrow">Limitation</div>
+      <div class="card-title">No appeal mechanism</div>
+      <div class="card-body">If an ATR is unsatisfactory or delayed, there is no formal pathway for citizens to escalate.</div>
+    </div>
+  </div>
+
+  <div style="font-family:'Libre Baskerville',serif; font-size:15px; font-weight:700; color:#0d2137; margin-bottom:10px;">Comparing systems at a glance</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th class="col-amber-h">CM Prajavani (existing)</th>
+        <th class="col-teal-h">Adilabad Pilot</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Filing location</strong></td><td class="col-bad">Only Hyderabad</td><td class="col-good">16 mandal IFCs + online</td></tr>
+      <tr><td><strong>Acknowledgement</strong></td><td class="col-bad">None</td><td class="col-good">Dated printed receipt</td></tr>
+      <tr><td><strong>Status tracking</strong></td><td class="col-bad">None</td><td class="col-good">Online portal</td></tr>
+      <tr><td><strong>Public hearing</strong></td><td class="col-bad">None</td><td class="col-good">Monthly mandal-level hearings</td></tr>
+      <tr><td><strong>ATR deadline</strong></td><td class="col-bad">No standard</td><td class="col-good">30 days mandatory</td></tr>
+      <tr><td><strong>GRO procedures</strong></td><td class="col-bad">None</td><td class="col-good">17 SOPs across 7 departments</td></tr>
+      <tr><td><strong>Independent verification</strong></td><td class="col-bad">None</td><td class="col-good">SSAAT + civil society field visits</td></tr>
+      <tr><td><strong>Appeal mechanism</strong></td><td class="col-bad">None</td><td class="col-good">Collector-level appeal process</td></tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 3 — JOURNEY + THE MODEL
+     ══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-title">The Pilot Journey</span>
+    <span class="page-header-logo">Adilabad <span>Prajavani</span></span>
+  </div>
+
+  <div class="eyebrow">The Journey</div>
+  <h2 class="section-title">From consultation to institutionalisation</h2>
+  <p class="section-lead">The pilot moved from civil society advocacy to a formally institutionalised district-level system within 15 months.</p>
+
+  <div class="timeline" style="margin-bottom:20px;">
+    <div class="tl-line"></div>
+    <div class="tl-item no-break">
+      <div class="tl-date">Sep 2024</div>
+      <div class="tl-dot"></div>
+      <div class="tl-text">Civil society public meeting on GRM reform. Consultations with communities across Adilabad.</div>
+    </div>
+    <div class="tl-item no-break">
+      <div class="tl-date milestone">Jan 2025</div>
+      <div class="tl-dot milestone"></div>
+      <div class="tl-text milestone">Adilabad Pilot formally launched (27 Jan 2025). IFCs activated across 16 mandals. GROs trained on 17 SOPs.</div>
+    </div>
+    <div class="tl-item no-break">
+      <div class="tl-date milestone">Feb 2025</div>
+      <div class="tl-dot milestone"></div>
+      <div class="tl-text milestone">First round of public hearings — 16 hearings across 16 mandals within 2 weeks. 55%+ complainant attendance.</div>
+    </div>
+    <div class="tl-item no-break">
+      <div class="tl-date">Nov 2025</div>
+      <div class="tl-dot"></div>
+      <div class="tl-text">Weekly Mandal Prajavani institutionalised — every Monday. Regular hearing rhythm established.</div>
+    </div>
+    <div class="tl-item no-break">
+      <div class="tl-date milestone">Jan 2026</div>
+      <div class="tl-dot milestone"></div>
+      <div class="tl-text milestone">Mandal Prajavani formally launched with full features: digital portal, ATR tracking, Collector appeal.</div>
+    </div>
+    <div class="tl-item no-break">
+      <div class="tl-date">Apr 2026</div>
+      <div class="tl-dot"></div>
+      <div class="tl-text">12,741 grievances registered. 82 public hearings held. 7,998 ATRs filed. Model under policy review.</div>
+    </div>
+  </div>
+
+  <div class="navy-block">
+    <div class="block-title">Scale of the pilot</div>
+    <div class="scale-grid" style="margin-top:14px;">
+      <div><div class="scale-num">16</div><div class="scale-lbl">Mandals covered</div></div>
+      <div><div class="scale-num">~100</div><div class="scale-lbl">Grievance Redress Officers</div></div>
+      <div><div class="scale-num">60+</div><div class="scale-lbl">Volunteers from 9 organisations</div></div>
+      <div><div class="scale-num">17</div><div class="scale-lbl">Standard Operating Procedures</div></div>
+      <div><div class="scale-num">7</div><div class="scale-lbl">Departments participating</div></div>
+      <div><div class="scale-num">20</div><div class="scale-lbl">Grievance categories</div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 4 — HOW THE MODEL WORKS
+     ══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-title">How the Model Works</span>
+    <span class="page-header-logo">Adilabad <span>Prajavani</span></span>
+  </div>
+
+  <div class="eyebrow">The Model</div>
+  <h2 class="section-title">Seven interlocking components</h2>
+  <p class="section-lead">Seven components form a complete grievance redress cycle — from filing at the village level to written, verified resolution.</p>
+
+  <div class="flow">
+    <div class="flow-step start">Village</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">IFC</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">GRO</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">Public Hearing</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">ATR</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">Appeal</div>
+  </div>
+
+  <div class="grid-2" style="margin-bottom:12px;">
+    <div class="card no-break">
+      <div class="code-badge">IFC</div>
+      <div class="card-title">Information Facilitation Centre</div>
+      <div class="card-body">Mandal-level centres with trained operators who register grievances and issue dated acknowledgement receipts. Brings filing to the citizen's doorstep — eliminates travel to Hyderabad.</div>
+    </div>
+    <div class="card no-break">
+      <div class="code-badge">GRO</div>
+      <div class="card-title">Grievance Redress Officer</div>
+      <div class="card-body">Designated officer responsible for investigating the grievance and filing an ATR within 30 days. Clear ownership, 30-day deadline, and SOPs guide what must be checked.</div>
+    </div>
+    <div class="card no-break">
+      <div class="code-badge">SOP</div>
+      <div class="card-title">Standard Operating Procedures</div>
+      <div class="card-body">17 SOPs across 7 departments, covering 20 grievance categories. Each SOP specifies what action the GRO must take. Converts discretion into procedure; makes responses auditable.</div>
+    </div>
+    <div class="card no-break">
+      <div class="code-badge">PH</div>
+      <div class="card-title">Public Hearing</div>
+      <div class="card-body">Monthly mandal-level hearings where citizens and GROs meet face to face. SSAAT and civil society facilitate. 82 hearings conducted. GROs must explain their action in public.</div>
+    </div>
+    <div class="card no-break">
+      <div class="code-badge">ATR</div>
+      <div class="card-title">Action Taken Report</div>
+      <div class="card-body">A mandatory written response from the GRO within 30 days of filing. Available online and downloadable. Transforms verbal assurances into a tracked, comparable record.</div>
+    </div>
+    <div class="card no-break">
+      <div class="code-badge">APL</div>
+      <div class="card-title">Appeals Process</div>
+      <div class="card-body">Citizens unsatisfied with ATR quality or facing delays can escalate to a Collector-level appeal. The Collector personally reviews selected cases. Closes the accountability loop.</div>
+    </div>
+  </div>
+
+  <div class="card no-break" style="margin-bottom:10px;">
+    <div class="code-badge">DGT</div>
+    <div class="card-title">Digital Platform</div>
+    <div class="card-body">A dedicated "Adilabad Pilot" tab on prajavani.cgg.gov.in enables 24×7 online grievance filing, OTP-based status tracking, and ATR downloads. Complements the physical IFC channel — digital as enabler, not replacement for the right to be heard.</div>
+  </div>
+
+  <div class="methodological-box">
+    <strong>Core methodological distinction — Disposal ≠ Resolution.</strong> An ATR marked "disposed" does not mean the citizen's problem is solved. SSAAT and civil society teams independently verify every closed grievance in the field. The independently verified resolution rate (~52–55%) is materially lower than the system's self-reported disposal rate (74%).
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 5 — DASHBOARD: OVERVIEW + GEOGRAPHY
+     ══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-title">Grievance Dashboard — Overview &amp; Geography</span>
+    <span class="page-header-logo">Adilabad <span>Prajavani</span></span>
+  </div>
+
+  <div class="eyebrow">Live Data</div>
+  <h2 class="section-title">Grievance dashboard</h2>
+  <div class="info-box">Data from prajavani.cgg.gov.in — Adilabad Pilot tab. Cut-off: 31 January 2026. Metrics below reflect the 5,000-case sample dataset; headline figures refer to the full 12,741-case dataset.</div>
+
+  <div class="db-section-head">Overview</div>
+  <div class="grid-4" style="margin-bottom:16px;">
+    <div class="card no-break">
+      <div style="font-family:'Libre Baskerville',serif; font-size:24px; font-weight:700; color:#0d2137;">12,741</div>
+      <div style="font-size:11px; color:#4a4640; margin-top:3px;">Total grievances filed</div>
+      <div style="font-size:9px; color:#7a7570;">Jan 2025 – Apr 2026</div>
+    </div>
+    <div class="card no-break">
+      <div style="font-family:'Libre Baskerville',serif; font-size:24px; font-weight:700; color:#0d2137;">7,998</div>
+      <div style="font-size:11px; color:#4a4640; margin-top:3px;">ATRs filed</div>
+      <div style="font-size:9px; color:#7a7570;">63% filing rate</div>
+    </div>
+    <div class="card no-break">
+      <div style="font-family:'Libre Baskerville',serif; font-size:24px; font-weight:700; color:#0d2137;">82</div>
+      <div style="font-size:11px; color:#4a4640; margin-top:3px;">Public hearings</div>
+      <div style="font-size:9px; color:#7a7570;">Across 16 mandals</div>
+    </div>
+    <div class="card no-break">
+      <div style="font-family:'Libre Baskerville',serif; font-size:24px; font-weight:700; color:#0d2137;">55%</div>
+      <div style="font-size:11px; color:#4a4640; margin-top:3px;">Complainant participation</div>
+      <div style="font-size:9px; color:#7a7570;">At public hearings</div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:6px; font-size:11px; font-weight:600; color:#4a4640;">Grievance status breakdown (5,000 sample)</div>
+  <div class="bar-row no-break"><div class="bar-label">ATR Submitted</div><div class="bar-track"><div class="bar-fill" style="width:57.8%; background:#2a706a;"></div></div><div class="bar-pct" style="color:#2a706a;">2,890</div></div>
+  <div class="bar-row no-break"><div class="bar-label">Pending GRO action</div><div class="bar-track"><div class="bar-fill" style="width:28.4%; background:#c47d2e;"></div></div><div class="bar-pct" style="color:#c47d2e;">1,420</div></div>
+  <div class="bar-row no-break" style="margin-bottom:18px;"><div class="bar-label">Closed</div><div class="bar-track"><div class="bar-fill" style="width:13.8%; background:#5a7ec4;"></div></div><div class="bar-pct" style="color:#5a7ec4;">690</div></div>
+
+  <div class="db-section-head">Mandal-wise ATR filing rates</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Mandal</th>
+        <th style="text-align:right;">Grievances</th>
+        <th style="text-align:right;">ATRs Filed</th>
+        <th style="text-align:right;">Rate</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Adilabad (R)</td><td style="text-align:right;">1,842</td><td style="text-align:right;">1,201</td><td style="text-align:right;font-weight:700;color:#2a706a;">65%</td><td><span class="badge badge-strong">Strong</span></td></tr>
+      <tr><td>Tamsi</td><td style="text-align:right;">423</td><td style="text-align:right;">267</td><td style="text-align:right;font-weight:700;color:#2a706a;">63%</td><td><span class="badge badge-strong">Strong</span></td></tr>
+      <tr><td>Dilawarpur</td><td style="text-align:right;">883</td><td style="text-align:right;">555</td><td style="text-align:right;font-weight:700;color:#2a706a;">63%</td><td><span class="badge badge-strong">Strong</span></td></tr>
+      <tr><td>Boath</td><td style="text-align:right;">1,123</td><td style="text-align:right;">698</td><td style="text-align:right;font-weight:700;color:#2a706a;">62%</td><td><span class="badge badge-strong">Strong</span></td></tr>
+      <tr><td>Neradigonda</td><td style="text-align:right;">867</td><td style="text-align:right;">534</td><td style="text-align:right;font-weight:700;color:#2a706a;">62%</td><td><span class="badge badge-strong">Strong</span></td></tr>
+      <tr><td>Utnoor</td><td style="text-align:right;">789</td><td style="text-align:right;">489</td><td style="text-align:right;font-weight:700;color:#2a706a;">62%</td><td><span class="badge badge-strong">Strong</span></td></tr>
+      <tr><td>Bela</td><td style="text-align:right;">687</td><td style="text-align:right;">398</td><td style="text-align:right;font-weight:700;color:#c47d2e;">58%</td><td><span class="badge badge-low">Low</span></td></tr>
+      <tr><td>Jainath</td><td style="text-align:right;">534</td><td style="text-align:right;">312</td><td style="text-align:right;font-weight:700;color:#c47d2e;">58%</td><td><span class="badge badge-low">Low</span></td></tr>
+      <tr><td>Ichoda</td><td style="text-align:right;">789</td><td style="text-align:right;">445</td><td style="text-align:right;font-weight:700;color:#c47d2e;">56%</td><td><span class="badge badge-low">Low</span></td></tr>
+      <tr><td>Bazarhatnoor</td><td style="text-align:right;">934</td><td style="text-align:right;">512</td><td style="text-align:right;font-weight:700;color:#c47d2e;">55%</td><td><span class="badge badge-low">Low</span></td></tr>
+      <tr><td>Talamadugu</td><td style="text-align:right;">567</td><td style="text-align:right;">289</td><td style="text-align:right;font-weight:700;color:#c47d2e;">51%</td><td><span class="badge badge-low">Low</span></td></tr>
+      <tr><td>Gudihatnoor</td><td style="text-align:right;">456</td><td style="text-align:right;">210</td><td style="text-align:right;font-weight:700;color:#c0392b;">46%</td><td><span class="badge badge-crit">Critical</span></td></tr>
+      <tr><td>Indervelly</td><td style="text-align:right;">612</td><td style="text-align:right;">289</td><td style="text-align:right;font-weight:700;color:#c0392b;">47%</td><td><span class="badge badge-crit">Critical</span></td></tr>
+      <tr><td>Narnoor</td><td style="text-align:right;">478</td><td style="text-align:right;">198</td><td style="text-align:right;font-weight:700;color:#c0392b;">41%</td><td><span class="badge badge-crit">Critical</span></td></tr>
+      <tr><td>Wankdi</td><td style="text-align:right;">412</td><td style="text-align:right;">167</td><td style="text-align:right;font-weight:700;color:#c0392b;">41%</td><td><span class="badge badge-crit">Critical</span></td></tr>
+      <tr><td>Sirikonda</td><td style="text-align:right;">345</td><td style="text-align:right;">134</td><td style="text-align:right;font-weight:700;color:#c0392b;">39%</td><td><span class="badge badge-crit">Critical</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 6 — DASHBOARD: DEPARTMENTS + TIMELINESS + RESOLUTION
+     ══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-title">Grievance Dashboard — Departments, Timeliness &amp; Resolution Quality</span>
+    <span class="page-header-logo">Adilabad <span>Prajavani</span></span>
+  </div>
+
+  <div class="db-section-head">ATR rates by department</div>
+  <div class="bar-row no-break"><div class="bar-label">Panchayat Raj &amp; RD (4,102)</div><div class="bar-track"><div class="bar-fill" style="width:65%; background:#2a706a;"></div></div><div class="bar-pct" style="color:#2a706a;">65%</div></div>
+  <div class="bar-row no-break"><div class="bar-label">Social Welfare (370)</div><div class="bar-track"><div class="bar-fill" style="width:80%; background:#c47d2e;"></div></div><div class="bar-pct" style="color:#c47d2e;">80%</div></div>
+  <div class="bar-row no-break"><div class="bar-label">Food &amp; Civil Supplies (1,543)</div><div class="bar-track"><div class="bar-fill" style="width:64%; background:#8b6bb1;"></div></div><div class="bar-pct" style="color:#8b6bb1;">64%</div></div>
+  <div class="bar-row no-break"><div class="bar-label">Energy — Gruhajyothi (2,834)</div><div class="bar-track"><div class="bar-fill" style="width:63%; background:#c47d2e;"></div></div><div class="bar-pct" style="color:#c47d2e;">63%</div></div>
+  <div class="bar-row no-break"><div class="bar-label">Revenue (2,201)</div><div class="bar-track"><div class="bar-fill" style="width:60%; background:#5a7ec4;"></div></div><div class="bar-pct" style="color:#5a7ec4;">60%</div></div>
+  <div class="bar-row no-break"><div class="bar-label">Agriculture (1,102)</div><div class="bar-track"><div class="bar-fill" style="width:56%; background:#4a9a60;"></div></div><div class="bar-pct" style="color:#4a9a60;">56%</div></div>
+  <div class="bar-row no-break" style="margin-bottom:18px;"><div class="bar-label">Forest — IFR (589)</div><div class="bar-track"><div class="bar-fill" style="width:53%; background:#c45a3a;"></div></div><div class="bar-pct" style="color:#c45a3a;">53%</div></div>
+
+  <div class="db-section-head">ATR timeliness</div>
+  <div class="grid-4" style="margin-bottom:18px;">
+    <div class="card no-break">
+      <div style="font-family:'Libre Baskerville',serif;font-size:22px;font-weight:700;color:#2a706a;">61%</div>
+      <div style="font-size:11px;color:#4a4640;margin-top:3px;">Filed within 30 days</div>
+    </div>
+    <div class="card no-break">
+      <div style="font-family:'Libre Baskerville',serif;font-size:22px;font-weight:700;color:#c47d2e;">22%</div>
+      <div style="font-size:11px;color:#4a4640;margin-top:3px;">Filed 31–60 days</div>
+    </div>
+    <div class="card no-break">
+      <div style="font-family:'Libre Baskerville',serif;font-size:22px;font-weight:700;color:#c0392b;">9%</div>
+      <div style="font-size:11px;color:#4a4640;margin-top:3px;">Filed after 60 days</div>
+    </div>
+    <div class="card no-break">
+      <div style="font-family:'Libre Baskerville',serif;font-size:22px;font-weight:700;color:#7a7570;">8%</div>
+      <div style="font-size:11px;color:#4a4640;margin-top:3px;">No ATR filed</div>
+    </div>
+  </div>
+
+  <div class="db-section-head">Resolution quality — the disposal ≠ resolution distinction</div>
+  <div class="col-2" style="margin-bottom:14px;">
+    <div class="card no-break" style="text-align:center;">
+      <div style="font-size:9px;font-weight:700;color:#7a7570;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:5px;">System-reported</div>
+      <div style="font-family:'Libre Baskerville',serif;font-size:36px;font-weight:700;color:#5a7ec4;">74%</div>
+      <div style="font-size:11px;color:#4a4640;">Disposed (ATR filed)</div>
+      <div style="font-size:9px;color:#7a7570;margin-top:2px;">Based on ATR submission status</div>
+    </div>
+    <div class="card no-break" style="text-align:center;">
+      <div style="font-size:9px;font-weight:700;color:#7a7570;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:5px;">Independently verified</div>
+      <div style="font-family:'Libre Baskerville',serif;font-size:36px;font-weight:700;color:#2a706a;">52–55%</div>
+      <div style="font-size:11px;color:#4a4640;">Actually resolved</div>
+      <div style="font-size:9px;color:#7a7570;margin-top:2px;">SSAAT + civil society field verification</div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:8px;font-size:11px;font-weight:600;color:#0d2137;">Field-verified review status breakdown</div>
+  <div class="bar-row no-break"><div class="bar-label">No Further Action Required (resolved)</div><div class="bar-track"><div class="bar-fill" style="width:52%;background:#2a706a;"></div></div><div class="bar-pct" style="color:#2a706a;">52%</div></div>
+  <div class="bar-row no-break"><div class="bar-label">Disposed — Policy Decision (state-level)</div><div class="bar-track"><div class="bar-fill" style="width:14%;background:#5a7ec4;"></div></div><div class="bar-pct" style="color:#5a7ec4;">14%</div></div>
+  <div class="bar-row no-break"><div class="bar-label">Pending at State Government</div><div class="bar-track"><div class="bar-fill" style="width:11%;background:#c0392b;"></div></div><div class="bar-pct" style="color:#c0392b;">11%</div></div>
+  <div class="bar-row no-break"><div class="bar-label">Disposed — Not Eligible</div><div class="bar-track"><div class="bar-fill" style="width:8%;background:#7a7570;"></div></div><div class="bar-pct" style="color:#7a7570;">8%</div></div>
+  <div class="bar-row no-break"><div class="bar-label">Under Collector Appeal</div><div class="bar-track"><div class="bar-fill" style="width:8%;background:#f0a84a;"></div></div><div class="bar-pct" style="color:#c47d2e;">8%</div></div>
+  <div class="bar-row no-break"><div class="bar-label">Action Required from Citizen</div><div class="bar-track"><div class="bar-fill" style="width:7%;background:#c47d2e;"></div></div><div class="bar-pct" style="color:#c47d2e;">7%</div></div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 7 — KEY INSIGHTS
+     ══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-title">Key Insights &amp; Learnings</span>
+    <span class="page-header-logo">Adilabad <span>Prajavani</span></span>
+  </div>
+
+  <div class="eyebrow">Evidence</div>
+  <h2 class="section-title">Key insights and learnings</h2>
+  <p class="section-lead">What the data and field evidence tell us — including what works, what doesn't, and what is still uncertain.</p>
+
+  <div class="insight-item no-break">
+    <div class="insight-num">01</div>
+    <div><div class="insight-title">Decentralisation dramatically improves access</div><div class="insight-body">Moving filing from Hyderabad to mandal IFCs removed the single largest barrier for rural citizens — the cost and distance of travel. 12,741 grievances in 15 months suggests pent-up demand that existing systems could not capture.</div></div>
+  </div>
+  <div class="insight-item no-break">
+    <div class="insight-num">02</div>
+    <div><div class="insight-title">Public hearings improve accountability</div><div class="insight-body">Mandals with regular public hearings show higher ATR quality and lower rates of "disposal without resolution." Face-to-face accountability creates different incentives than back-office processing.</div></div>
+  </div>
+  <div class="insight-item no-break">
+    <div class="insight-num">03</div>
+    <div><div class="insight-title">Digital + physical hybrid outperforms either alone</div><div class="insight-body">The portal enables 24×7 filing and status tracking, but physical IFCs remain essential for citizens without smartphones or literacy support. Neither channel is sufficient on its own.</div></div>
+  </div>
+  <div class="insight-item no-break">
+    <div class="insight-num">04</div>
+    <div><div class="insight-title">Independent verification is non-negotiable</div><div class="insight-body">The 20+ percentage point gap between system-reported disposal (74%) and field-verified resolution (52–55%) demonstrates that self-reporting cannot substitute for independent accountability.</div></div>
+  </div>
+  <div class="insight-item no-break" style="margin-bottom:20px;">
+    <div class="insight-num">05</div>
+    <div><div class="insight-title">Written SOPs reduce arbitrariness at scale</div><div class="insight-body">17 SOPs across 7 departments standardise what GROs must do — and what citizens can expect. Without them, responses vary by officer rather than by merit of the grievance.</div></div>
+  </div>
+
+  <div style="font-family:'Libre Baskerville',serif;font-size:15px;font-weight:700;color:#0d2137;margin-bottom:10px;">Limitations and caveats</div>
+  <div class="grid-2">
+    <div class="card card-teal no-break">
+      <div class="card-title">Data cut-off</div>
+      <div class="card-body">The dataset closes on 31 January 2026. Grievances filed or resolved after this date are not captured. Actual resolution rates are likely higher.</div>
+    </div>
+    <div class="card card-teal no-break">
+      <div class="card-title">ATR quality variation</div>
+      <div class="card-body">The quality of ATR remarks varies significantly across mandals and GROs. Some ATRs consist of a single generic line; others are detailed and verifiable.</div>
+    </div>
+    <div class="card card-teal no-break">
+      <div class="card-title">Field verification coverage</div>
+      <div class="card-body">Not all closed grievances could be verified in person within the reporting period. Coverage is estimated at approximately 70% of closed cases.</div>
+    </div>
+    <div class="card card-teal no-break">
+      <div class="card-title">Mandal variation</div>
+      <div class="card-body">10 of 17 mandals filed zero ATRs in one reporting week despite holding 3,521 pending cases — indicating chronic underperformance in a subset of mandals.</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 8 — CASE STORIES
+     ══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-title">Case Stories</span>
+    <span class="page-header-logo">Adilabad <span>Prajavani</span></span>
+  </div>
+
+  <div class="eyebrow">Human Impact</div>
+  <h2 class="section-title">Representative case stories</h2>
+  <p class="section-lead">Six cases — resolved and unresolved — from across the pilot. Names anonymised.</p>
+
+  <div class="col-2">
+
+    <div class="case-card no-break">
+      <div class="case-header">
+        <span class="badge case-label" style="background:rgba(42,112,106,0.12);color:#2a706a;">✓ Resolved</span>
+        <span class="badge case-label" style="background:rgba(13,33,55,0.1);color:#0d2137;">Revenue · Adilabad (R)</span>
+      </div>
+      <div class="case-section-label">The issue</div>
+      <div class="case-text" style="margin-bottom:6px;">Land in Prohibited (POB) list for 5+ years. Unable to sell or mortgage. Multiple redirections across departments.</div>
+      <div class="case-section-label">Outcome</div>
+      <div class="case-text" style="margin-bottom:6px;">Land removed from Prohibited list. Patta issued (April 2026) after Collector personally reviewed case following two delayed ATRs.</div>
+      <div class="case-quote">
+        <div class="case-quote-mark">"</div>
+        <div class="case-quote-text">For five years no one would listen. Within four months of registering at the IFC, I finally have my documents.</div>
+        <div class="case-quote-attr">— Applicant, Adilabad (R) mandal</div>
+      </div>
+    </div>
+
+    <div class="case-card no-break">
+      <div class="case-header">
+        <span class="badge case-label case-unresolved">○ Unresolved</span>
+        <span class="badge case-label" style="background:rgba(13,33,55,0.1);color:#0d2137;">Energy · Boath</span>
+      </div>
+      <div class="case-section-label">The issue</div>
+      <div class="case-text" style="margin-bottom:6px;">Gruhajyothi (free electricity) not received. Portal shows "Not Applied" but applicant was enrolled in Praja Palana.</div>
+      <div class="case-section-label">Outcome</div>
+      <div class="case-text">Pending at State Government — portal correction requires state-level intervention. 79 similar cases in mandal with identical status.</div>
+    </div>
+
+    <div class="case-card no-break">
+      <div class="case-header">
+        <span class="badge case-label" style="background:rgba(42,112,106,0.12);color:#2a706a;">✓ Resolved</span>
+        <span class="badge case-label" style="background:rgba(13,33,55,0.1);color:#0d2137;">Panchayat Raj · Utnoor</span>
+      </div>
+      <div class="case-section-label">The issue</div>
+      <div class="case-text" style="margin-bottom:6px;">MGNREGA wages for 42 days unpaid for 8 months. Bank account linked but transfers failing.</div>
+      <div class="case-section-label">Outcome</div>
+      <div class="case-text" style="margin-bottom:6px;">Wages released within 19 days. Biometric linking corrected. Public hearing facilitated dialogue with local panchayat officer present.</div>
+      <div class="case-quote">
+        <div class="case-quote-mark">"</div>
+        <div class="case-quote-text">The hearing made the Panchayat officer listen. He could not ignore it in front of everyone.</div>
+        <div class="case-quote-attr">— Applicant, Utnoor mandal</div>
+      </div>
+    </div>
+
+    <div class="case-card no-break">
+      <div class="case-header">
+        <span class="badge case-label case-partial">◑ Partially resolved</span>
+        <span class="badge case-label" style="background:rgba(13,33,55,0.1);color:#0d2137;">Panchayat Raj · Bela</span>
+      </div>
+      <div class="case-section-label">The issue</div>
+      <div class="case-text" style="margin-bottom:6px;">Widow pension stopped for 14 months following biometric failure. GRO ATR notes "permanent migration" — applicant has never left the village.</div>
+      <div class="case-section-label">Outcome</div>
+      <div class="case-text">Pension restored for future months after SSAAT field team verified presence. Arrears of 14 months pending state-level policy clarification.</div>
+    </div>
+
+    <div class="case-card no-break">
+      <div class="case-header">
+        <span class="badge case-label" style="background:rgba(42,112,106,0.12);color:#2a706a;">✓ Resolved</span>
+        <span class="badge case-label" style="background:rgba(13,33,55,0.1);color:#0d2137;">Forest · Indervelly</span>
+      </div>
+      <div class="case-section-label">The issue</div>
+      <div class="case-text" style="margin-bottom:6px;">Individual Forest Rights (IFR) title pending for 6 years despite Gram Sabha approval.</div>
+      <div class="case-section-label">Outcome</div>
+      <div class="case-text" style="margin-bottom:6px;">IFR title issued after sub-divisional review. Two other similar cases in same mandal resolved in same hearing round.</div>
+      <div class="case-quote">
+        <div class="case-quote-mark">"</div>
+        <div class="case-quote-text">The GRO came to our village for the first time in years. The public hearing is what made them move the file.</div>
+        <div class="case-quote-attr">— Applicant, Indervelly mandal</div>
+      </div>
+    </div>
+
+    <div class="case-card no-break">
+      <div class="case-header">
+        <span class="badge case-label case-unresolved">○ Unresolved</span>
+        <span class="badge case-label" style="background:rgba(13,33,55,0.1);color:#0d2137;">Food &amp; Civil Supplies · Neradigonda</span>
+      </div>
+      <div class="case-section-label">The issue</div>
+      <div class="case-text" style="margin-bottom:6px;">Gas subsidy of ₹1,050 (3 cylinders) matched in portal but not disbursed for 8 months.</div>
+      <div class="case-section-label">Outcome</div>
+      <div class="case-text">Subsidy release pending state treasury clearance. Confirmed state-level payment gateway issue affecting 79 similar cases in the mandal.</div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 9 — WAY FORWARD
+     ══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-title">Policy Recommendations</span>
+    <span class="page-header-logo">Adilabad <span>Prajavani</span></span>
+  </div>
+
+  <div class="eyebrow">Way Forward</div>
+  <h2 class="section-title">Policy recommendations</h2>
+  <p class="section-lead">The Adilabad model has demonstrated feasibility. The next challenge is formalisation and replication — in Telangana and beyond.</p>
+
+  <div class="grid-2" style="margin-bottom:16px;">
+    <div class="rec-card no-break">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+        <div class="rec-title">System integration</div>
+        <span class="rec-priority pri-high">High</span>
+      </div>
+      <ul class="rec-list">
+        <li>Integrate mandal, district, and state grievance portals into a unified architecture with shared data standards.</li>
+        <li>Establish real-time API linkages between the Adilabad Pilot tab and CM Prajavani backend.</li>
+      </ul>
+    </div>
+    <div class="rec-card no-break">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+        <div class="rec-title">Strengthen appeals</div>
+        <span class="rec-priority pri-high">High</span>
+      </div>
+      <ul class="rec-list">
+        <li>Formalise the Collector appeal as a statutory right with defined timelines.</li>
+        <li>Extend appeals to a state-level ombudsman for cases involving state-level blocks.</li>
+      </ul>
+    </div>
+    <div class="rec-card no-break">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+        <div class="rec-title">Scale public hearings</div>
+        <span class="rec-priority pri-high">High</span>
+      </div>
+      <ul class="rec-list">
+        <li>Mandate monthly public hearings at mandal level across all 33 Telangana districts.</li>
+        <li>Include SSAAT and civil society as official facilitators in the Government Order.</li>
+      </ul>
+    </div>
+    <div class="rec-card no-break">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+        <div class="rec-title">Independent verification</div>
+        <span class="rec-priority pri-crit">Critical</span>
+      </div>
+      <ul class="rec-list">
+        <li>Formalise SSAAT's field verification role via Government Order — not just pilot MoU.</li>
+        <li>Publish independently verified resolution rates alongside system-reported disposal rates.</li>
+      </ul>
+    </div>
+    <div class="rec-card no-break">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+        <div class="rec-title">Standardise SOPs statewide</div>
+        <span class="rec-priority pri-med">Medium</span>
+      </div>
+      <ul class="rec-list">
+        <li>Scale the 17 Adilabad SOPs as a template for all districts in Telangana.</li>
+        <li>Develop a living SOP repository with regular updates as schemes change.</li>
+      </ul>
+    </div>
+    <div class="rec-card no-break">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+        <div class="rec-title">Digital infrastructure</div>
+        <span class="rec-priority pri-med">Medium</span>
+      </div>
+      <ul class="rec-list">
+        <li>Invest in SMS notifications, multilingual interface, accessibility for feature phone users.</li>
+        <li>Build real-time ATR pendency dashboards for district collectors.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-2">
+    <div class="navy-block no-break">
+      <div class="block-title">The ask to government</div>
+      <div class="block-body">Issue a Government Order recognising SSAAT and civil society as official verification partners. This is the single step that would institutionalise the accountability layer that makes this model work.</div>
+    </div>
+    <div class="navy-block no-break">
+      <div class="block-title">The replication opportunity</div>
+      <div class="block-body">Multiple states are watching this pilot. Telangana has the opportunity to establish the national standard for decentralised, participatory, verified grievance redress — building on the CM Prajavani brand and infrastructure.</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 10 — RESOURCES + PARTNERS
+     ══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-title">Reports, Resources &amp; Partners</span>
+    <span class="page-header-logo">Adilabad <span>Prajavani</span></span>
+  </div>
+
+  <div class="eyebrow">Reports &amp; Resources</div>
+  <h2 class="section-title">Download and access</h2>
+  <p class="section-lead">Published materials from the Adilabad Pilot. For data requests or partnership inquiries, contact SAFAR India.</p>
+
+  <div class="grid-3" style="margin-bottom:24px;">
+    <div class="res-card res-primary no-break">
+      <div class="res-type">PDF — Full Report</div>
+      <div class="res-title">Full Pilot Report</div>
+      <div class="res-desc">Complete 22–25 page evidence report covering all aspects of the pilot.</div>
+    </div>
+    <div class="res-card no-break">
+      <div class="res-type">PDF</div>
+      <div class="res-title">ATR Analysis</div>
+      <div class="res-desc">Quantitative analysis of ATR filing rates, timeliness, and quality across mandals and departments.</div>
+    </div>
+    <div class="res-card no-break">
+      <div class="res-type">PDF</div>
+      <div class="res-title">Case Study Compendium</div>
+      <div class="res-desc">Extended narratives for 12 representative grievance cases — resolved and unresolved.</div>
+    </div>
+    <div class="res-card no-break">
+      <div class="res-type">PDF</div>
+      <div class="res-title">Concept Note</div>
+      <div class="res-desc">Original concept note for the Adilabad Decentralised Prajavani pilot (September 2024).</div>
+    </div>
+    <div class="res-card no-break">
+      <div class="res-type">PDF</div>
+      <div class="res-title">SOP Reference Guide</div>
+      <div class="res-desc">17 Standard Operating Procedures for GROs across 7 departments and 20 grievance categories.</div>
+    </div>
+    <div class="res-card no-break">
+      <div class="res-type">XLS</div>
+      <div class="res-title">Grievance Data (5,000)</div>
+      <div class="res-desc">Anonymised dataset of 5,000 grievances with follow-up status and review classification.</div>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid #d8d4cc; padding-top:18px; margin-bottom:18px;">
+    <div class="col-3">
+      <div class="no-break">
+        <div style="font-family:'Libre Baskerville',serif;font-size:13px;font-weight:700;color:#0d2137;margin-bottom:6px;">Digital portal</div>
+        <div style="font-size:11px;color:#4a4640;line-height:1.55;margin-bottom:4px;">File grievances, track status, and download ATRs. Adilabad Pilot tab on the official state portal.</div>
+        <div style="font-size:12px;color:#2a706a;font-weight:600;">prajavani.cgg.gov.in</div>
+      </div>
+      <div class="no-break">
+        <div style="font-family:'Libre Baskerville',serif;font-size:13px;font-weight:700;color:#0d2137;margin-bottom:6px;">For inquiries</div>
+        <div style="font-size:11px;color:#4a4640;line-height:1.55;margin-bottom:4px;">SAFAR facilitates this pilot. For partnership, replication, or media inquiries:</div>
+        <div style="font-size:12px;color:#2a706a;font-weight:600;">safar-india.org</div>
+      </div>
+      <div class="no-break">
+        <div style="font-family:'Libre Baskerville',serif;font-size:13px;font-weight:700;color:#0d2137;margin-bottom:6px;">Collaborating partners</div>
+        <div style="font-size:11px;color:#4a4640;line-height:1.55;">Adilabad District Administration · SSAAT · Kisan Mitra · SAFAR India · 60+ national volunteers from 9 organisations</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="navy-block no-break" style="margin-top:16px;">
+    <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+      <div>
+        <div class="block-title" style="font-size:12px; margin-bottom:4px;">Adilabad Decentralised Prajavani Pilot</div>
+        <div class="block-body" style="font-size:10px;">Data cut-off: 31 January 2026 · Published May 2026 · Adilabad District, Telangana</div>
+      </div>
+      <div style="text-align:right;">
+        <div class="block-body" style="font-size:10px;">Grounded in Articles 14, 21 &amp; 38 of the Indian Constitution</div>
+        <div style="font-size:9px; color:rgba(255,255,255,0.25); margin-top:3px;">This report may be reproduced freely with attribution to SAFAR India</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── AUTO-PRINT ───────────────────────────────────────── -->
+<script>
+  document.fonts.ready.then(function() {
+    setTimeout(function() { window.print(); }, 500);
+  });
+</script>
+
+</body>
+</html>
