@@ -141,7 +141,7 @@ function PilotJourney() {
             ))}
           </div>
           <div>
-            <img src="images/Complaint-resolved-in-PH.jpeg" alt="Citizen Satisfied at a Public Hearing, Tamsi, Adilabad"style={{ width:'100%', borderRadius:4, objectFit:'cover', aspectRatio:'4/3', display:'block' }} />
+            <img src="Images/Complaint-resolved-in-PH.jpeg" alt="Citizen Satisfied at a Public Hearing, Tamsi, Adilabad"style={{ width:'100%', borderRadius:4, objectFit:'cover', aspectRatio:'4/3', display:'block' }} />
           </div>
         </div>
         <div style={{ background: C.navy, borderRadius: 6, padding: '36px 40px' }}>
