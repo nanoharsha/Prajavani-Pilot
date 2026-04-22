@@ -12,6 +12,7 @@
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: hidden; max-width: 100%; }
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Source Sans 3', sans-serif;
@@ -19,6 +20,7 @@
       color: #1a1814;
       -webkit-font-smoothing: antialiased;
     }
+    img { max-width: 100%; height: auto; }
     button { font-family: inherit; }
     table { font-family: 'Source Sans 3', sans-serif; }
     ul { list-style: disc; }
@@ -73,20 +75,36 @@
 
     @media (max-width: 900px) {
       #site-nav { padding: 0 12px; height: 48px; }
-      .nav-brand { font-size: 12px; }
-      .nav-links { gap: 0; flex: 1; margin-left: 10px; }
-      .nav-links a { padding: 0 8px; height: 48px; font-size: 10.5px; letter-spacing: 0.01em; }
+      .nav-brand { font-size: 12px; flex-shrink: 0; }
+      /* min-width:0 is the critical fix — without it, flex items use their
+         content width as minimum and force the page wider than the viewport */
+      .nav-links { gap: 0; flex: 1 1 auto; min-width: 0; margin-left: 10px; -webkit-overflow-scrolling: touch; }
+      .nav-links a { padding: 0 10px; height: 48px; font-size: 11px; letter-spacing: 0.01em; }
     }
 
-    @media (max-width: 700px) {
+    @media (max-width: 640px) {
+      /* Hero section */
       #hero { min-height: auto !important; padding-top: 48px !important; }
-      #hero > div:first-child { padding: 40px 18px 32px !important; }
-      #hero h1 { margin-bottom: 14px !important; }
-      /* Stat strip: tighter padding + smaller number so it doesn't clip */
-      #hero [style*="grid-template-columns"] { gap: 1px !important; }
-      .stat-cell { padding: 14px 14px !important; }
-      .stat-cell .stat-num { font-size: 24px !important; }
+      #hero > div:first-child { padding: 32px 18px 28px !important; max-width: 100% !important; }
+      #hero h1 { font-size: 30px !important; margin-bottom: 12px !important; }
+      #hero > div > p { font-size: 14px !important; }
+
+      /* Stat strip: force exactly 2 columns */
+      .hero-stats { grid-template-columns: 1fr 1fr !important; max-width: 100% !important; margin-bottom: 28px !important; }
+      .stat-cell { padding: 14px 12px !important; }
+      .stat-cell .stat-num { font-size: 22px !important; }
       .stat-cell .stat-label { font-size: 10px !important; }
+
+      /* Hero buttons: stack full-width so nothing clips */
+      .hero-buttons { flex-direction: column !important; gap: 8px !important; align-items: stretch !important; }
+      .hero-buttons a { width: 100% !important; text-align: center !important; padding: 12px 14px !important; font-size: 13px !important; }
+
+      /* Hero meta row */
+      #hero + nav, #hero ~ div[style*="border-top"] { padding: 14px 18px !important; }
+    }
+
+    @media (max-width: 420px) {
+      .nav-links a { padding: 0 8px; font-size: 10.5px; }
     }
   </style>
 </head>
@@ -130,7 +148,7 @@
     </p>
 
     <!-- Stat strip -->
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:1px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.08); border-radius:4px; overflow:hidden; margin-bottom:36px; max-width:840px;">
+    <div class="hero-stats" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:1px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.08); border-radius:4px; overflow:hidden; margin-bottom:36px; max-width:840px;">
       <div class="stat-cell" style="background:#0d2137; padding:20px 20px;">
         <div class="stat-num" style="font-family:'Libre Baskerville',serif; font-size:34px; font-weight:700; color:#f0a84a;">12,741</div>
         <div class="stat-label" style="font-family:'Source Sans 3',sans-serif; font-size:11px; color:rgba(255,255,255,0.45); margin-top:4px;">Grievances filed</div>
@@ -157,7 +175,7 @@
       </div>
     </div>
 
-    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+    <div class="hero-buttons" style="display:flex; gap:12px; flex-wrap:wrap;">
       <a href="#dashboard" style="display:inline-block; padding:11px 22px; background:#c47d2e; color:#fff; font-family:'Source Sans 3',sans-serif; font-size:14px; font-weight:700; text-decoration:none; border-radius:3px;">Explore Dashboard</a>
       <a href="#resources" style="display:inline-block; padding:11px 22px; background:transparent; color:#fff; font-family:'Source Sans 3',sans-serif; font-size:14px; font-weight:700; text-decoration:none; border-radius:3px; border:1px solid rgba(255,255,255,0.28);">Download Report</a>
       <a href="#model" style="display:inline-block; padding:11px 22px; background:transparent; color:rgba(255,255,255,0.6); font-family:'Source Sans 3',sans-serif; font-size:14px; font-weight:600; text-decoration:none; border-radius:3px; border:1px solid rgba(255,255,255,0.1);">How the Model Works</a>
