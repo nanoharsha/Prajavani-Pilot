@@ -5,7 +5,9 @@
 function CaseStories() {
   useLang();
   const printMode = usePrintMode();
+  const isMobile = useIsMobile();
   const [active, setActive] = React.useState(0);
+  const stripRef = React.useRef(null);
 
   const cases = [
     {
@@ -79,6 +81,12 @@ function CaseStories() {
   const statusColor = { resolved: C.teal, partial: C.amber, unresolved: C.red, 'pending-policy': '#c45a3a' };
   const statusLabel = { resolved: '✓ Resolved', partial: '◑ Partially resolved (with effort)', unresolved: '○ Unresolved — system failure', 'pending-policy': '⏸ Pending state policy decision' };
 
+  React.useEffect(() => {
+    if (!isMobile || !stripRef.current) return;
+    const el = stripRef.current.querySelector('[data-active="true"]');
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }, [active, isMobile]);
+
   return (
     <section id="cases" data-screen-label="12 Cases" style={SS.section(C.bg)}>
       <div style={SS.container}>
@@ -88,19 +96,53 @@ function CaseStories() {
           {t('Real cases from the Pilot — both successes and the failures the system has not yet been able to address. Drawn from Section 6 of the Pilot report.', 'పైలట్ నుండి నిజమైన కేసులు — విజయాలు మరియు వ్యవస్థ ఇన్నికీ పరిష్కరించలేని వైఫల్యాలు రెండు. పైలట్ నివేదికలోని సెక్షన్ 6 నుండి తీసుకోబడింది.')}
         </p>
 
-        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 28 }} className={printMode ? 'print-hide' : ''}>
-          {cases.map((cs, i) => (
-            <button key={i} onClick={() => setActive(i)} style={{
-              padding: '10px 16px', fontFamily: "'Source Sans 3',sans-serif", fontSize: 12,
-              fontWeight: active===i?700:500, color: active===i?C.white:C.textMid,
-              background: active===i?C.navy:C.white, border: `1px solid ${active===i?C.navy:C.border}`, borderRadius: 3, cursor: 'pointer',
-              display: 'flex', alignItems: 'center', gap: 8, textAlign: 'left'
-            }}>
-              <span style={{ width: 8, height: 8, borderRadius: '50%', background: statusColor[cs.status], display: 'inline-block', flexShrink: 0 }} />
-              <span>{cs.name}</span>
-            </button>
-          ))}
-        </div>
+        {isMobile ? (
+          <div style={{ marginBottom: 22 }} className={printMode ? 'print-hide' : ''}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+              <button onClick={() => setActive(Math.max(0, active - 1))} disabled={active === 0} aria-label="Previous case" style={{
+                width: 38, height: 38, flexShrink: 0, borderRadius: '50%', cursor: active === 0 ? 'default' : 'pointer',
+                border: `1px solid ${C.border}`, background: C.white, color: active === 0 ? C.border : C.navy,
+                fontSize: 16, fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center'
+              }}>‹</button>
+              <div style={{ flexGrow: 1, textAlign: 'center' }}>
+                <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 11, fontWeight: 700, color: C.amber, letterSpacing: '0.08em', textTransform: 'uppercase' }}>{t('Case', 'కేసు')} {active + 1} / {cases.length}</div>
+                <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 15, fontWeight: 700, color: C.navy }}>{c.name}</div>
+              </div>
+              <button onClick={() => setActive(Math.min(cases.length - 1, active + 1))} disabled={active === cases.length - 1} aria-label="Next case" style={{
+                width: 38, height: 38, flexShrink: 0, borderRadius: '50%', cursor: active === cases.length - 1 ? 'default' : 'pointer',
+                border: `1px solid ${C.border}`, background: C.white, color: active === cases.length - 1 ? C.border : C.navy,
+                fontSize: 16, fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center'
+              }}>›</button>
+            </div>
+            <div ref={stripRef} style={{ display: 'flex', gap: 8, overflowX: 'auto', paddingBottom: 6, scrollbarWidth: 'none' }}>
+              {cases.map((cs, i) => (
+                <button key={i} data-active={active === i} onClick={() => setActive(i)} style={{
+                  flexShrink: 0, padding: '8px 13px', fontFamily: "'Source Sans 3',sans-serif", fontSize: 12,
+                  fontWeight: active===i?700:500, color: active===i?C.white:C.textMid,
+                  background: active===i?C.navy:C.white, border: `1px solid ${active===i?C.navy:C.border}`, borderRadius: 100, cursor: 'pointer',
+                  display: 'flex', alignItems: 'center', gap: 7, whiteSpace: 'nowrap'
+                }}>
+                  <span style={{ width: 8, height: 8, borderRadius: '50%', background: statusColor[cs.status], display: 'inline-block', flexShrink: 0 }} />
+                  <span>{cs.name}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 28 }} className={printMode ? 'print-hide' : ''}>
+            {cases.map((cs, i) => (
+              <button key={i} onClick={() => setActive(i)} style={{
+                padding: '10px 16px', fontFamily: "'Source Sans 3',sans-serif", fontSize: 12,
+                fontWeight: active===i?700:500, color: active===i?C.white:C.textMid,
+                background: active===i?C.navy:C.white, border: `1px solid ${active===i?C.navy:C.border}`, borderRadius: 3, cursor: 'pointer',
+                display: 'flex', alignItems: 'center', gap: 8, textAlign: 'left'
+              }}>
+                <span style={{ width: 8, height: 8, borderRadius: '50%', background: statusColor[cs.status], display: 'inline-block', flexShrink: 0 }} />
+                <span>{cs.name}</span>
+              </button>
+            ))}
+          </div>
+        )}
 
         <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1.4fr)', gap: 28 }} className={printMode ? 'print-hide' : ''}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
