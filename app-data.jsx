@@ -95,8 +95,8 @@ function Dashboard() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 16, marginBottom: 32 }}>
               {[
                 { label: 'Total grievances filed', value: '12,110', note: 'Jan 2025 – Jan 2026' },
-                { label: 'Reviewed (analytical sample)', value: '5,000', note: 'Followed up + lifecycle review' },
                 { label: 'Followed up by SSAAT + CS', value: '5,900', note: 'as of 18 April 2026' },
+                { label: 'Reviewed (analytical sample)', value: '5,000', note: 'Followed up + lifecycle review' },
               ].map((s, i) => (
                 <div key={i} style={{ ...SS.card, background: C.white }}>
                   <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 30, fontWeight: 700, color: C.navy }}>{s.value}</div>

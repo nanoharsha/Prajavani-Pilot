@@ -32,6 +32,27 @@ function HowItWorks() {
       }
     },
     {
+      code: 'PDI', title: 'Proactive Disclosure of Information',
+      short: 'Proactive disclosure of information about government programmes — pensions, ration cards, farmer subsidies — so citizens understand their entitlements and can file informed grievances.',
+      photo: 'Photo: Information facilitation at a mandal Prajavani',
+      subtitle: 'Information as the first step to redress',
+      content: {
+        body: 'A key component of the model is the proactive disclosure of information about government programmes — social security pensions, ration cards, farmer subsidies and similar schemes. Access to clear information improves citizens’ understanding of various government initiatives, helps them diagnose problems with their own applications, and enables them to file informed grievances that seek the appropriate intervention.',
+        sections: [
+          { heading: 'Why proactive disclosure matters', items: [
+            'Many citizens do not file grievances simply because they are unaware of their entitlements, or of why an application was rejected',
+            'Clear information about eligibility and application status lets citizens identify the actual problem before approaching the system',
+            'Informed grievances are better defined, easier for GROs to act on, and quicker to resolve',
+          ]},
+          { heading: 'How it featured in the Pilot', items: [
+            'IFC operators and civil society volunteers shared scheme eligibility information while registering grievances',
+            'Information was actively carried to the village level — not left passively available online',
+            'Way Forward: a dedicated proactive disclosure system (Praja Soochana) should sit alongside Prajavani statewide',
+          ]},
+        ]
+      }
+    },
+    {
       code: 'GRO', title: 'Grievance Redress Officer',
       short: 'A mandal-level officer one level above frontline staff — given additional charge of investigating and responding to grievances within their department.',
       photo: 'Photo: GRO conducting field inquiry in a village',
@@ -49,14 +70,12 @@ function HowItWorks() {
             'Housing → Housing officer, Mandal level',
           ]},
           { heading: 'GRO responsibilities under Pilot SOPs', items: [
-            'Investigate the grievance within their department\'s jurisdiction',
-            'Conduct field verification where the SOP requires',
+            'Conduct enquiry into the grievances marked to them, including conducting field verification, in line with the SOPs',
             'File a written ATR with specific action remarks within 30 days',
-            'Attend Mandal Prajavani and present the ATR; record remarks on pre-formatted receipt in writing',
+            'Attend Mandal Prajavanis and share enquiry findings; record remarks on pre-formatted receipt in writing',
             'Respond to Collector Appeal if the case is escalated',
           ]},
           { heading: 'Observed limitations', items: [
-            'GROs from new postings often lacked orientation — leading to mismanaged cases',
             'Several GROs continued to show lack of ownership over the system',
             'Repeated training is required, including in-person rounds — currently uneven across mandals',
           ]},
@@ -79,13 +98,12 @@ function HowItWorks() {
             'Help GROs justify decisions where the issue is state-level or policy-bound',
           ]},
           { heading: 'Departments with SOPs issued', items: [
-            'Panchayat Raj & RD — MGNREGA, NFBS, Pensions, Drinking Water',
+            'Panchayat Raj & RD — MGNREGA, Pensions',
             'Food & Civil Supplies — Gas Subsidy, Ration Card',
             'Energy — Gruhajyothi, Service Issues, Electrocution Death',
-            'Revenue — Land Issues, Survey, Unnatural Deaths, Certificates',
+            'Revenue — Land Issues, Survey, Certificates',
             'Agriculture — PM Kisan, Crop Loan Waiver, Rythu Bima',
             'Tribal Welfare — Individual Forest Rights (IFR)',
-            'Housing — Indiramma Indlu',
           ]},
           { heading: 'Recommendation', items: [
             'SOPs must be regularly updated in consultation with mandal- and district-level officials',
@@ -101,7 +119,7 @@ function HowItWorks() {
       photo: 'Photo: Public hearing under shamiyana, Adilabad — Feb 2025',
       subtitle: 'The Pilot\'s most effective feature',
       content: {
-        body: 'Five rounds of public hearings (80+ hearings) were held in the first year. The space was structured around makeshift worktables: Entry Desks for existing grievances, an IFC for new ones, a presiding desk under a large shamiyana, and an Exit Desk where officials\' responses were photographed before the citizen left.',
+        body: 'Five rounds of public hearings (80+ hearings) were held at the mandal level in the first year. Each public hearing was presided over by a district-level officer, with all mandal-level officers present and open for the public to attend. The space was organised with a series of desks to manage the flow of proceedings: an Entry Desk to issue tokens to complainants (for registered grievances), the Presiding Officer\'s Desk, various GROs\' Desks (department-wise), an Exit Desk to record officers\' responses before the citizen left, and a separate IFC Desk for filing new grievances.',
         sections: [
           { heading: 'What was achieved at hearings', items: [
             'Agriculture Department officials acknowledged errors in crop loan waiver records — agreed to write to concerned banks',
