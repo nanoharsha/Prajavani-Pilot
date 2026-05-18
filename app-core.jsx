@@ -75,6 +75,20 @@ function PrintBreak() {
   return <div className="print-break" style={{ display: 'none' }} aria-hidden="true" />;
 }
 
+// ─────────────────────────────────────────────────────────────────────────
+// useIsMobile — re-renders components when crossing the mobile breakpoint
+// ─────────────────────────────────────────────────────────────────────────
+function useIsMobile(breakpoint = 760) {
+  const [mobile, setMobile] = React.useState(
+    typeof window !== 'undefined' && window.innerWidth <= breakpoint);
+  React.useEffect(() => {
+    const onResize = () => setMobile(window.innerWidth <= breakpoint);
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, [breakpoint]);
+  return mobile;
+}
+
 // ════════════════════════════════════════════════════════════════════════════
 // SECTION 1: WHY CHANGE — comparing CM Prajavani / Collector Prajavani / CPGRAMS / Pilot
 // ════════════════════════════════════════════════════════════════════════════
@@ -126,24 +140,6 @@ function WhyChange() {
               )}
             </tbody>
           </table>
-        </div>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 14 }}>
-          <div style={{ ...SS.card, borderTop: `3px solid ${C.red}` }}>
-            <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 10, fontWeight: 700, color: C.red, marginBottom: 6, letterSpacing: '0.1em', textTransform: 'uppercase' }}>CM Prajavani</div>
-            <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 24, fontWeight: 700, color: C.navy, marginBottom: 4 }}>64,623</div>
-            <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 13, color: C.textMid, lineHeight: 1.5 }}>Grievances received Dec 2023 – Dec 2025. Self-reported as <strong>74% "resolved/processed"</strong> — without independent verification.</div>
-          </div>
-          <div style={{ ...SS.card, borderTop: `3px solid ${C.amber}` }}>
-            <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 10, fontWeight: 700, color: C.amber, marginBottom: 6, letterSpacing: '0.1em', textTransform: 'uppercase' }}>Collector Prajavani</div>
-            <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 24, fontWeight: 700, color: C.navy, marginBottom: 4 }}>100–150</div>
-            <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 13, color: C.textMid, lineHeight: 1.5 }}>Petitioners typically processed in a single 2–3 hour Monday sitting. Most receive only brief file-receipt; substantive hearing is rare. Repeat petitioners often return for years.</div>
-          </div>
-          <div style={{ ...SS.card, borderTop: `3px solid ${C.teal}` }}>
-            <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 10, fontWeight: 700, color: C.teal, marginBottom: 6, letterSpacing: '0.1em', textTransform: 'uppercase' }}>Adilabad Pilot</div>
-            <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 24, fontWeight: 700, color: C.navy, marginBottom: 4 }}>12,110</div>
-            <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 13, color: C.textMid, lineHeight: 1.5 }}>Grievances Jan 2025 – Apr 2026. Of 5,000 reviewed: <strong>66.56% "Positively Dealt With"</strong> after independent field verification.</div>
-          </div>
         </div>
       </div>
     </section>);
@@ -253,6 +249,7 @@ function OtherStates() {
 
 function PilotJourney() {
   useLang();
+  const isMobile = useIsMobile();
   const events = [
   { date: 'Sep 2024', label: 'Public hearing in Hyderabad on access to information and grievance redress. 200+ activists, academics, civil society participate. Twenty testimonies presented; eight resolutions agreed.', milestone: false },
   { date: 'Sep 2024 – Jan 2025', label: 'Over 20 design meetings between civil society partners, district administration, and CGG to design Pilot architecture.', milestone: false },
@@ -284,9 +281,20 @@ function PilotJourney() {
           {t('15 months from launch to institutionalisation. The Pilot moved deliberately — testing, learning, adjusting — and culminated in a formal Government Order on 30 April 2026.', 'ప్రారంభం నుండి సంస్థాగతీకరణ వరకు 15 నెలలు. పైలట్ ఊహించి పనిచేసింది — పరీక్షించీ, నేర్చుకుంటూ, సరిచేసుకుంటూ — మరియు 30 ఏప్రిల్ 2026న అధికారిక ప్రభుత్వ ఉత్తర్వుతో ముగిసింది.')}
         </p>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1.4fr) minmax(0,1fr)', gap: 40, marginBottom: 48 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'minmax(0,1.4fr) minmax(0,1fr)', gap: isMobile ? 28 : 40, marginBottom: 48 }}>
           <div>
             {events.map((ev, i) =>
+            isMobile ?
+            <div key={i} style={{ display: 'flex', gap: 14 }}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexShrink: 0, width: 14 }}>
+                  <div style={{ width: ev.milestone ? 14 : 10, height: ev.milestone ? 14 : 10, borderRadius: '50%', background: ev.milestone ? C.amber : C.white, border: `2px solid ${ev.milestone ? C.amber : C.border}`, flexShrink: 0, marginTop: 2 }} />
+                  {i < events.length - 1 && <div style={{ width: 2, flexGrow: 1, background: C.border, marginTop: 4, minHeight: 28 }} />}
+                </div>
+                <div style={{ paddingBottom: 22, flexGrow: 1, minWidth: 0 }}>
+                  <span style={{ display: 'inline-block', fontFamily: "'Source Sans 3',sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase', color: ev.milestone ? C.white : C.textMid, background: ev.milestone ? C.amber : C.bgAlt, padding: '3px 10px', borderRadius: 100, marginBottom: 8 }}>{ev.date}</span>
+                  <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 14, color: C.textMid, lineHeight: 1.65, background: ev.milestone ? `${C.amber}10` : 'transparent', borderLeft: ev.milestone ? `3px solid ${C.amber}` : 'none', borderRadius: ev.milestone ? 4 : 0, padding: ev.milestone ? '10px 14px' : 0 }}>{ev.label}</div>
+                </div>
+              </div> :
             <div key={i} style={{ display: 'flex', gap: 0, marginBottom: 16 }}>
                 <div style={{ width: 110, flexShrink: 0, textAlign: 'right', paddingRight: 14, paddingTop: 3, fontFamily: "'Source Sans 3',sans-serif", fontSize: 11, fontWeight: 700, color: ev.milestone ? C.amber : C.textLight, lineHeight: 1.3 }}>{ev.date}</div>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexShrink: 0, width: 18 }}>
@@ -318,4 +326,4 @@ function PilotJourney() {
 
 }
 
-Object.assign(window, { C, SS, PhotoPlaceholder, Bar, TabPanel, PrintBreak, WhyChange, OtherStates, PilotJourney });
+Object.assign(window, { C, SS, PhotoPlaceholder, Bar, TabPanel, PrintBreak, useIsMobile, WhyChange, OtherStates, PilotJourney });
