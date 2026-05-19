@@ -385,19 +385,6 @@ function PolicyIssues() {
         'A clear case of how rigid, top-down digital systems centralise power in ways that undermine decentralised administration',
       ]
     },
-    {
-      title: 'IFR mechanical disposal',
-      severity: 'Medium',
-      summary: 'GROs filed template "Land Succession" ATRs for IFR grievances that were not about succession.',
-      details: [
-        '13 grievances filed under "Land Succession Issue" sub-category received identical template ATR remarks',
-        '"A letter addressed to the Tahasildar concerned for calling Succession proposal..."',
-        'Direct follow-up calls with complainants confirmed: many of these grievances were not about succession at all',
-        'Mechanical template application without due application of mind — a system pattern',
-        'Discussed with PO-ITDA on 8 December 2025 — assurance that ATRs shall not be filed without due application of mind',
-        'Pilot software allows only one final ATR — closes the door for follow-up after either department officer submits',
-      ]
-    },
   ];
 
   const severityColor = { Critical: C.red, High: C.amber, Medium: C.teal };
@@ -428,16 +415,14 @@ function PolicyIssues() {
                   transition: 'all 0.15s',
                 }}
               >
-                <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: '0.1em', color: severityColor[iss.severity], textTransform: 'uppercase', marginBottom: 4 }}>{iss.severity}</div>
                 <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 14, fontWeight: 700, color: active === i ? C.white : C.navy, lineHeight: 1.3 }}>{iss.title}</div>
               </div>
             ))}
           </div>
 
           <div style={{ ...SS.card, padding: '28px 32px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 14, gap: 12 }}>
+            <div style={{ marginBottom: 14 }}>
               <h3 style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 22, fontWeight: 700, color: C.navy, lineHeight: 1.2 }}>{c.title}</h3>
-              <span style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', padding: '3px 10px', borderRadius: 2, background: `${severityColor[c.severity]}18`, color: severityColor[c.severity], textTransform: 'uppercase', whiteSpace: 'nowrap' }}>{c.severity}</span>
             </div>
             <p style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 15, color: C.textMid, lineHeight: 1.7, marginBottom: 18, fontStyle: 'italic', borderLeft: `3px solid ${C.amber}`, paddingLeft: 14 }}>{c.summary}</p>
             <ul style={{ paddingLeft: 18 }}>
@@ -452,9 +437,8 @@ function PolicyIssues() {
           <div className="print-stack">
             {issues.map((iss, i) => (
               <div key={i} className="print-policy-item" style={{ background: C.white, border: `1px solid ${C.border}`, borderLeft: `4px solid ${severityColor[iss.severity]}`, borderRadius: 4, padding: '22px 26px', marginBottom: 18 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12, marginBottom: 10 }}>
+                <div style={{ marginBottom: 10 }}>
                   <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 18, fontWeight: 700, color: C.navy, lineHeight: 1.3 }}>{iss.title}</div>
-                  <span style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: '0.1em', padding: '3px 8px', borderRadius: 2, background: `${severityColor[iss.severity]}18`, color: severityColor[iss.severity], textTransform: 'uppercase', whiteSpace: 'nowrap', flexShrink: 0 }}>{iss.severity}</span>
                 </div>
                 <p style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 14, color: C.textMid, lineHeight: 1.6, marginBottom: 12, fontStyle: 'italic', borderLeft: `2px solid ${C.amber}`, paddingLeft: 12 }}>{iss.summary}</p>
                 <ul style={{ paddingLeft: 18, margin: 0 }}>
