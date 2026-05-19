@@ -247,8 +247,8 @@ function HowItWorks() {
         <div style={{ background: C.navy, padding: '24px 32px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', borderRadius: '6px 6px 0 0', position: 'sticky', top: 0, zIndex: 1 }}>
           <div>
             <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', color: C.amberLight, textTransform: 'uppercase', marginBottom: 6 }}>{active_data.code}</div>
-            <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 22, fontWeight: 700, color: C.white, lineHeight: 1.2 }}>{active_data.title}</div>
-            <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 14, color: 'rgba(255,255,255,0.55)', marginTop: 6 }}>{active_data.subtitle}</div>
+            <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 22, fontWeight: 700, color: C.white, lineHeight: 1.2 }}>{t(active_data.title)}</div>
+            <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 14, color: 'rgba(255,255,255,0.55)', marginTop: 6 }}>{t(active_data.subtitle)}</div>
           </div>
           <button onClick={() => setActive(null)} style={{ background: 'rgba(255,255,255,0.1)', border: 'none', color: C.white, width: 32, height: 32, borderRadius: '50%', cursor: 'pointer', fontSize: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginLeft: 16 }}>×</button>
         </div>
@@ -258,13 +258,13 @@ function HowItWorks() {
             <PhotoPlaceholder label={active_data.photo} aspect="3/4" />
           </div>
           <div style={{ padding: '28px 32px' }}>
-            <p style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 15, color: C.textMid, lineHeight: 1.7, marginBottom: 22 }}>{active_data.content.body}</p>
+            <p style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 15, color: C.textMid, lineHeight: 1.7, marginBottom: 22 }}>{t(active_data.content.body)}</p>
             {active_data.content.sections.map((sec, si) => (
               <div key={si} style={{ marginBottom: 20 }}>
-                <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 14, fontWeight: 700, color: C.navy, marginBottom: 10 }}>{sec.heading}</div>
+                <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 14, fontWeight: 700, color: C.navy, marginBottom: 10 }}>{t(sec.heading)}</div>
                 <ul style={{ paddingLeft: 18 }}>
                   {sec.items.map((item, ii) => (
-                    <li key={ii} style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 13, color: C.textMid, lineHeight: 1.6, marginBottom: 6 }}>{item}</li>
+                    <li key={ii} style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 13, color: C.textMid, lineHeight: 1.6, marginBottom: 6 }}>{t(item)}</li>
                   ))}
                 </ul>
               </div>
@@ -290,12 +290,12 @@ function HowItWorks() {
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', gap: 4 }}>
             {flowSteps.map((step, i) => (
               <React.Fragment key={i}>
-                <div style={{ background: C.amber, color: C.navy, padding: '10px 16px', borderRadius: 4, fontFamily: "'Source Sans 3',sans-serif", fontSize: 12, fontWeight: 700, whiteSpace: 'nowrap' }}>{step}</div>
+                <div style={{ background: C.amber, color: C.navy, padding: '10px 16px', borderRadius: 4, fontFamily: "'Source Sans 3',sans-serif", fontSize: 12, fontWeight: 700, whiteSpace: 'nowrap' }}>{t(step)}</div>
                 {i < flowSteps.length-1 && <div style={{ color: C.amberLight, fontSize: 16, padding: '0 4px', opacity: 0.5 }}>→</div>}
               </React.Fragment>
             ))}
           </div>
-          <div style={{ textAlign: 'center', marginTop: 12, fontFamily: "'Source Sans 3',sans-serif", fontSize: 11, color: 'rgba(255,255,255,0.3)' }}>Independent verification by SSAAT + civil society wraps around every step</div>
+          <div style={{ textAlign: 'center', marginTop: 12, fontFamily: "'Source Sans 3',sans-serif", fontSize: 11, color: 'rgba(255,255,255,0.3)' }}>{t('Independent verification by SSAAT + civil society wraps around every step')}</div>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 16 }} className={printMode ? 'print-hide' : ''}>
@@ -307,10 +307,10 @@ function HowItWorks() {
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 10 }}>
                 <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', color: C.teal, background: `${C.teal}18`, padding: '3px 8px', borderRadius: 2 }}>{comp.code}</div>
-                <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 11, color: C.amber, fontWeight: 600 }}>Details →</div>
+                <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 11, color: C.amber, fontWeight: 600 }}>{t('Details →')}</div>
               </div>
-              <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 15, fontWeight: 700, color: C.navy, marginBottom: 8 }}>{comp.title}</div>
-              <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 13, color: C.textMid, lineHeight: 1.6 }}>{comp.short}</div>
+              <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 15, fontWeight: 700, color: C.navy, marginBottom: 8 }}>{t(comp.title)}</div>
+              <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 13, color: C.textMid, lineHeight: 1.6 }}>{t(comp.short)}</div>
             </div>
           ))}
         </div>
@@ -322,17 +322,17 @@ function HowItWorks() {
               <div key={i} className="print-component-item" style={{ background: C.white, border: `1px solid ${C.border}`, borderRadius: 4, marginBottom: 20, overflow: 'hidden' }}>
                 <div style={{ background: C.navy, padding: '14px 22px' }}>
                   <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', color: C.amberLight, textTransform: 'uppercase' }}>{comp.code}</div>
-                  <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 18, fontWeight: 700, color: C.white, lineHeight: 1.25, marginTop: 3 }}>{comp.title}</div>
-                  <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 12, color: 'rgba(255,255,255,0.55)', marginTop: 3 }}>{comp.subtitle}</div>
+                  <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 18, fontWeight: 700, color: C.white, lineHeight: 1.25, marginTop: 3 }}>{t(comp.title)}</div>
+                  <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 12, color: 'rgba(255,255,255,0.55)', marginTop: 3 }}>{t(comp.subtitle)}</div>
                 </div>
                 <div style={{ padding: '20px 24px' }}>
-                  <p style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 13, color: C.textMid, lineHeight: 1.7, marginBottom: 14 }}>{comp.content.body}</p>
+                  <p style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 13, color: C.textMid, lineHeight: 1.7, marginBottom: 14 }}>{t(comp.content.body)}</p>
                   {comp.content.sections.map((sec, si) => (
                     <div key={si} style={{ marginBottom: 14 }}>
-                      <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 13, fontWeight: 700, color: C.navy, marginBottom: 6 }}>{sec.heading}</div>
+                      <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 13, fontWeight: 700, color: C.navy, marginBottom: 6 }}>{t(sec.heading)}</div>
                       <ul style={{ paddingLeft: 18, margin: 0 }}>
                         {sec.items.map((item, ii) => (
-                          <li key={ii} style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 12, color: C.textMid, lineHeight: 1.65, marginBottom: 4 }}>{item}</li>
+                          <li key={ii} style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 12, color: C.textMid, lineHeight: 1.65, marginBottom: 4 }}>{t(item)}</li>
                         ))}
                       </ul>
                     </div>
@@ -496,8 +496,8 @@ function DigitalTechnology() {
               marginBottom: -2,
               cursor: 'pointer', whiteSpace: 'nowrap'
             }}>
-              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: phase === i ? C.amber : C.textLight, marginBottom: 4 }}>{p.label}</div>
-              {p.title.split(' — ')[0]}
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: phase === i ? C.amber : C.textLight, marginBottom: 4 }}>{t(p.label)}</div>
+              {t(p.title).split(' — ')[0]}
             </button>
           ))}
         </div>
@@ -507,27 +507,27 @@ function DigitalTechnology() {
         <div key={pIdx} className={printMode ? 'print-phase' : ''} style={{ marginBottom: 40 }}>
           {printMode && (
             <h3 className="print-only-heading" style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 18, fontWeight: 700, color: C.navy, margin: '32px 0 14px', borderTop: `2px solid ${C.amber}`, paddingTop: 16 }}>
-              {phaseData.label} — {phaseData.title}
+              {t(phaseData.label)} — {t(phaseData.title)}
             </h3>
           )}
-          <h3 style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 22, fontWeight: 700, color: C.navy, marginBottom: 12 }}>{phaseData.title}</h3>
-          <p style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 15, color: C.textMid, lineHeight: 1.7, marginBottom: 24, maxWidth: 780 }}>{phaseData.body}</p>
+          <h3 style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 22, fontWeight: 700, color: C.navy, marginBottom: 12 }}>{t(phaseData.title)}</h3>
+          <p style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 15, color: C.textMid, lineHeight: 1.7, marginBottom: 24, maxWidth: 780 }}>{t(phaseData.body)}</p>
 
           <div style={{ display: 'grid', gridTemplateColumns: phaseData.friction.length > 0 ? '1fr 1fr' : '1fr', gap: 20 }}>
             <div style={{ ...SS.card, background: C.white, borderLeft: `3px solid ${C.teal}` }}>
-              <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 11, fontWeight: 700, color: C.teal, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 12 }}>What was built</div>
+              <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 11, fontWeight: 700, color: C.teal, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 12 }}>{t('What was built')}</div>
               <ul style={{ paddingLeft: 18, margin: 0 }}>
                 {phaseData.built.map((item, i) => (
-                  <li key={i} style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 13, color: C.textMid, lineHeight: 1.6, marginBottom: 6 }}>{item}</li>
+                  <li key={i} style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 13, color: C.textMid, lineHeight: 1.6, marginBottom: 6 }}>{t(item)}</li>
                 ))}
               </ul>
             </div>
             {phaseData.friction.length > 0 && (
               <div style={{ ...SS.card, background: C.white, borderLeft: `3px solid ${C.red}` }}>
-                <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 11, fontWeight: 700, color: C.red, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 12 }}>Friction & gaps</div>
+                <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 11, fontWeight: 700, color: C.red, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 12 }}>{t('Friction & gaps')}</div>
                 <ul style={{ paddingLeft: 18, margin: 0 }}>
                   {phaseData.friction.map((item, i) => (
-                    <li key={i} style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 13, color: C.textMid, lineHeight: 1.6, marginBottom: 6 }}>{item}</li>
+                    <li key={i} style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 13, color: C.textMid, lineHeight: 1.6, marginBottom: 6 }}>{t(item)}</li>
                   ))}
                 </ul>
               </div>
@@ -537,12 +537,12 @@ function DigitalTechnology() {
         ))}
 
         {/* Learnings */}
-        <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 20, fontWeight: 700, color: C.navy, marginBottom: 14 }}>Three learnings about technology and grievance redress</div>
+        <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 20, fontWeight: 700, color: C.navy, marginBottom: 14 }}>{t('Three learnings about technology and grievance redress')}</div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16 }}>
           {learnings.map((l, i) => (
             <div key={i} style={{ background: C.white, border: `1px solid ${C.border}`, borderRadius: 4, padding: '22px 26px' }}>
-              <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 16, fontWeight: 700, color: C.navy, marginBottom: 8 }}>{l.title}</div>
-              <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 13, color: C.textMid, lineHeight: 1.7 }}>{l.body}</div>
+              <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 16, fontWeight: 700, color: C.navy, marginBottom: 8 }}>{t(l.title)}</div>
+              <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 13, color: C.textMid, lineHeight: 1.7 }}>{t(l.body)}</div>
             </div>
           ))}
         </div>
@@ -613,10 +613,10 @@ function FollowUpMechanism() {
         <div style={{ background: C.navy, borderRadius: 6, padding: '32px 40px', marginBottom: 36, display: 'grid', gridTemplateColumns: 'auto 1fr', gap: 32, alignItems: 'center' }}>
           <div>
             <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 56, fontWeight: 700, color: C.amberLight, lineHeight: 1 }}>{followUpStat.num}</div>
-            <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 12, color: 'rgba(255,255,255,0.5)', marginTop: 6 }}>{followUpStat.label}</div>
+            <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 12, color: 'rgba(255,255,255,0.5)', marginTop: 6 }}>{t(followUpStat.label)}</div>
           </div>
           <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 14, color: 'rgba(255,255,255,0.7)', lineHeight: 1.7 }}>
-            {t('Field follow-ups were conducted both at the citizen\'s end — through field visits and phone calls — and at the officer\'s end. The findings were then assigned one of 11 review-status categories, grouped into the 5-category framework shown below.', 'క్షేత్ర ఫాలో-అప్లు క్షేత్ర సందర్శనలు మరియు ఫోన్ కాల్స్ ద్వారా పౌరుల వద్ద మరియు అధికారుల వద్ద జరిగాయి. ప్రజావాణి నివేదికలో ప్రజావాణి నివేదికలో ప్రదర్శించినట్టుగా 11 సమీక్షా స్థితులు ఎంపిక చేయబడ్డాయి, వాటిని 5 వర్గాల ఫ్రేమ్‌వర్క్‌లో చేర్చి చూపిస్తున్నారు.')}
+            {t('Field follow-ups were conducted both at the citizen\'s end — through field visits and phone calls — and at the officer\'s end. The findings were then assigned one of 11 review-status categories, grouped into the 5-category framework shown below.', 'క్షేత్ర ఫాలో-అప్‌లు పౌరుల వద్ద — క్షేత్ర సందర్శనలు మరియు ఫోన్ కాల్స్ ద్వారా — మరియు అధికారుల వద్ద నిర్వహించబడ్డాయి. ఫలితాలకు 11 సమీక్షా-స్థితి వర్గాలలో ఒకటి కేటాయించబడింది, వాటిని క్రింద చూపిన 5-వర్గాల ఫ్రేమ్‌వర్క్‌లో సమూహపరిచారు.')}
           </div>
         </div>
 
@@ -640,12 +640,12 @@ function FollowUpMechanism() {
                   <tr key={`${gi}-${ii}`} style={{ background: (gi % 2 === 0) ? C.white : C.bg, borderTop: `1px solid ${C.border}` }}>
                     {ii === 0 && (
                       <td rowSpan={grp.items.length} style={{ padding: '14px 16px', verticalAlign: 'top', borderRight: `1px solid ${C.border}`, borderLeft: `4px solid ${grp.color}`, background: C.white }}>
-                        <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 15, fontWeight: 700, color: C.navy }}>{grp.group}</div>
-                        <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: grp.color, marginTop: 6 }}>{grp.items.length} {grp.items.length === 1 ? 'status' : 'statuses'}</div>
+                        <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 15, fontWeight: 700, color: C.navy }}>{t(grp.group)}</div>
+                        <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: grp.color, marginTop: 6 }}>{grp.items.length} {t(grp.items.length === 1 ? 'status' : 'statuses')}</div>
                       </td>
                     )}
-                    <td style={{ padding: '11px 14px', color: C.navy, fontWeight: 600, verticalAlign: 'top' }}>{it.name}</td>
-                    <td style={{ padding: '11px 14px', color: C.textMid, lineHeight: 1.6, verticalAlign: 'top' }}>{it.note}</td>
+                    <td style={{ padding: '11px 14px', color: C.navy, fontWeight: 600, verticalAlign: 'top' }}>{t(it.name)}</td>
+                    <td style={{ padding: '11px 14px', color: C.textMid, lineHeight: 1.6, verticalAlign: 'top' }}>{t(it.note)}</td>
                   </tr>
                 )))}
               </tbody>
@@ -658,13 +658,13 @@ function FollowUpMechanism() {
           {[
             { id: 'process', label: 'The Process' },
             { id: 'team', label: 'Who Does It' },
-          ].map(t => (
-            <button key={t.id} onClick={() => setTab(t.id)} style={{
+          ].map(tb => (
+            <button key={tb.id} onClick={() => setTab(tb.id)} style={{
               padding: '10px 22px', fontFamily: "'Source Sans 3',sans-serif", fontSize: 14,
-              fontWeight: tab===t.id?700:500, color: tab===t.id?C.navy:C.textLight,
-              background: 'none', border: 'none', borderBottom: `2px solid ${tab===t.id?C.amber:'transparent'}`,
+              fontWeight: tab===tb.id?700:500, color: tab===tb.id?C.navy:C.textLight,
+              background: 'none', border: 'none', borderBottom: `2px solid ${tab===tb.id?C.amber:'transparent'}`,
               marginBottom: -2, cursor: 'pointer'
-            }}>{t.label}</button>
+            }}>{t(tb.label)}</button>
           ))}
         </div>
 
@@ -679,17 +679,17 @@ function FollowUpMechanism() {
                 <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 26, fontWeight: 700, color: C.amber, flexShrink: 0, width: 32, lineHeight: 1.1 }}>{s.num}</div>
                 <div style={{ flexGrow: 1 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap', gap: 8, marginBottom: 4 }}>
-                    <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 16, fontWeight: 700, color: C.navy }}>{s.title}</div>
-                    <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 11, color: C.teal, background: `${C.teal}15`, padding: '2px 8px', borderRadius: 2, fontWeight: 600 }}>{s.actor}</div>
+                    <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 16, fontWeight: 700, color: C.navy }}>{t(s.title)}</div>
+                    <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 11, color: C.teal, background: `${C.teal}15`, padding: '2px 8px', borderRadius: 2, fontWeight: 600 }}>{t(s.actor)}</div>
                   </div>
-                  <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 14, color: C.textMid, lineHeight: 1.6 }}>{s.body}</div>
+                  <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 14, color: C.textMid, lineHeight: 1.6 }}>{t(s.body)}</div>
                 </div>
               </div>
             ))}
             <div style={{ background: C.navy, borderRadius: 6, padding: '28px 36px', marginTop: 24 }}>
-              <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 16, color: C.white, marginBottom: 10 }}>Pendor Vinod Kumar, Kisan Mitra Helpline, Adilabad</div>
+              <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 16, color: C.white, marginBottom: 10 }}>{t('Pendor Vinod Kumar, Kisan Mitra Helpline, Adilabad')}</div>
               <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 14, color: 'rgba(255,255,255,0.75)', lineHeight: 1.7, fontStyle: 'italic' }}>
-                "Many citizens know their issues, but the concerned officers often do not take timely action. Officers ask citizens to wait for one or two days. When the citizen returns, they are told that the officer is not available or is busy, and they are asked to come again the following week. Such incidents happen frequently, especially in rural areas. Due to these continuous delays and lack of proper guidance, we are working to support citizens at the grassroots level — through proper follow-up and coordination with the concerned departments."
+                {t('"Many citizens know their issues, but the concerned officers often do not take timely action. Officers ask citizens to wait for one or two days. When the citizen returns, they are told that the officer is not available or is busy, and they are asked to come again the following week. Such incidents happen frequently, especially in rural areas. Due to these continuous delays and lack of proper guidance, we are working to support citizens at the grassroots level — through proper follow-up and coordination with the concerned departments."')}
               </div>
             </div>
           </div>
@@ -697,14 +697,14 @@ function FollowUpMechanism() {
 
         <TabPanel id="team" label={t('Who Does It', 'ఎవరు చేస్తారు')} active={tab === 'team'} printMode={printMode}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 20 }}>
-            {teamRoles.map((t, i) => (
-              <div key={i} style={{ background: C.bg, border: `1px solid ${C.border}`, borderTop: `4px solid ${t.color}`, borderRadius: 4, padding: '22px 26px' }}>
-                <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 18, fontWeight: 700, color: C.navy }}>{t.org}</div>
-                <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 12, color: C.textLight, marginTop: 3, marginBottom: 10 }}>{t.full}</div>
-                <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 11, fontWeight: 700, background: `${t.color}18`, color: t.color, padding: '3px 8px', borderRadius: 2, display: 'inline-block', marginBottom: 14 }}>{t.role}</div>
+            {teamRoles.map((tm, i) => (
+              <div key={i} style={{ background: C.bg, border: `1px solid ${C.border}`, borderTop: `4px solid ${tm.color}`, borderRadius: 4, padding: '22px 26px' }}>
+                <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 18, fontWeight: 700, color: C.navy }}>{t(tm.org)}</div>
+                <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 12, color: C.textLight, marginTop: 3, marginBottom: 10 }}>{t(tm.full)}</div>
+                <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 11, fontWeight: 700, background: `${tm.color}18`, color: tm.color, padding: '3px 8px', borderRadius: 2, display: 'inline-block', marginBottom: 14 }}>{t(tm.role)}</div>
                 <ul style={{ paddingLeft: 16, margin: 0 }}>
-                  {t.focus.map((f, j) => (
-                    <li key={j} style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 13, color: C.textMid, lineHeight: 1.6, marginBottom: 5 }}>{f}</li>
+                  {tm.focus.map((f, j) => (
+                    <li key={j} style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 13, color: C.textMid, lineHeight: 1.6, marginBottom: 5 }}>{t(f)}</li>
                   ))}
                 </ul>
               </div>
