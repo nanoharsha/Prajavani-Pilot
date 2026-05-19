@@ -65,7 +65,7 @@ function HowItWorks() {
             'Revenue → Tahsildar / Mandal Revenue Officer (MRO)',
             'Energy → Assistant Engineer (AE), Electricity Department',
             'Panchayat Raj & RD → Mandal Parishad Development Officer (MPDO)',
-            'Food & Civil Supplies → Tahsildar / Revenue division',
+            'Food & Civil Supplies → Ration Card: Tahsildar / MRO · Gas Subsidy: MPDO',
             'Tribal Welfare → Deputy Director, ITDA (Forest Rights)',
             'Housing → Housing officer, Mandal level',
           ]},
