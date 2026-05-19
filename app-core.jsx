@@ -114,7 +114,7 @@ function WhyChange() {
         <div style={SS.eyebrow}>{t('The Problem', 'సమస్య')}</div>
         <h2 style={SS.sectionTitle}>{t('Why the existing system needed reform', 'ప్రస్తుత వ్యవస్థకు సంస్కరణలు ఎందుకు అవసరమయ్యాయి')}</h2>
         <p style={SS.sectionLead}>
-          {t('Telangana\'s grievance redress architecture rests on three overlapping structures — the national-level CPGRAMS, the state-level CM Prajavani at Praja Bhavan Hyderabad, and the weekly Collector Prajavani at district headquarters. Each has structural gaps. The Adilabad Pilot tested whether these gaps could be closed at the mandal level.', 'తెలంగాణ ఫిర్యాదు పరిష్కార వ్యవస్థ మూడు అతివ్యాప్త నిర్మాణాలపై ఆధారపడి ఉంది — జాతీయ-స్థాయి CPGRAMS, హైదరాబాద్ ప్రజా భవన్ లో CM ప్రజావాణి, మరియు జిల్లా కేంద్రాలలో వారానికి కలెక్టర్ ప్రజావాణి. ప్రతి ఒక్కదానిలోను బ్యాప్వ్థీకరణ లోపాలు ఉన్నాయి. ఆదిలాబాద్ పైలట్ ఈ లోపాలను మండల స్థాయిలో పూరించగలమా అనేదాన్ని పరీక్షించింది.')}
+          {t('Telangana\'s grievance redress architecture rests on three overlapping structures — the national-level CPGRAMS, the state-level CM Prajavani at Praja Bhavan Hyderabad, and the weekly Collector Prajavani at district headquarters. Each has structural gaps. The Adilabad Pilot tested whether these gaps could be closed at the mandal level.', 'తెలంగాణ ఫిర్యాదు పరిష్కార వ్యవస్థ మూడు అతివ్యాప్త నిర్మాణాలపై ఆధారపడి ఉంది — జాతీయ-స్థాయి CPGRAMS, హైదరాబాద్ ప్రజా భవన్ లో CM ప్రజావాణి, మరియు జిల్లా కేంద్రాలలో వారానికి కలెక్టర్ ప్రజావాణి. ప్రతి ఒక్కదానిలోనూ నిర్మాణాత్మక లోపాలు ఉన్నాయి. ఈ లోపాలను మండల స్థాయిలో పూరించగలమా అనేదాన్ని ఆదిలాబాద్ పైలట్ పరీక్షించింది.')}
         </p>
 
         <div style={{ overflowX: 'auto', marginBottom: 32, border: `1px solid ${C.border}`, borderRadius: 4 }}>
@@ -186,7 +186,7 @@ function OtherStates() {
         <div style={SS.eyebrow}>{t('National Context', 'జాతీయ సందర్భం')}</div>
         <h2 style={SS.sectionTitle}>{t('Grievance redress across India', 'భారతదేశంలో ఫిర్యాదు పరిష్కారం')}</h2>
         <p style={SS.sectionLead}>
-          {t('Most states have built dedicated grievance portals. Few have built statutory rights. Adilabad\'s pilot is positioned within this national landscape — as a model that other states may learn from.', 'చాలా రాష్ట్రాలు ఫిర్యాదు పోర్టల్‌లను నిర్మించాయి. చట్టబద్ధమైన హక్కులు కెలవీ రాష్ట్రాల్లో. ఆదిలాబాద్ పైలట్ ఈ జాతీయ పరిదృశ్యంలో — ఇతర రాష్ట్రాలు నేర్చుకోగల ఒక నమూనాగా నిలుస్తుంది.')}
+          {t('Most states have built dedicated grievance portals. Few have built statutory rights. Adilabad\'s pilot is positioned within this national landscape — as a model that other states may learn from.', 'చాలా రాష్ట్రాలు ఫిర్యాదు పోర్టల్‌లను నిర్మించాయి. కానీ చట్టబద్ధమైన హక్కులను కొన్ని రాష్ట్రాలు మాత్రమే ఏర్పాటు చేశాయి. ఆదిలాబాద్ పైలట్ ఈ జాతీయ పరిదృశ్యంలో — ఇతర రాష్ట్రాలు నేర్చుకోగల ఒక నమూనాగా నిలుస్తుంది.')}
         </p>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: 14, marginBottom: 40 }}>
