@@ -190,50 +190,90 @@ function GrievanceForm() {
     color: C.navy, marginBottom: 6, display: 'block',
   };
 
+  // Prominent banner — makes clear this is NOT a real grievance filing
+  const DemoBanner = () => (
+    <div style={{ background: '#fff4e6', border: `1.5px solid ${C.amber}`, borderRadius: 4, padding: '12px 16px', marginBottom: 18, display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={C.amber} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: 1 }}><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 12.5, color: '#7a4a10', lineHeight: 1.55 }}>
+        <strong style={{ color: '#9a3412' }}>{t('This is a demonstration — not a real grievance.', 'ఇది ఒక ప్రదర్శన — నిజమైన ఫిర్యాదు కాదు.')}</strong>{' '}
+        {t('Nothing you enter is submitted to any government portal or saved anywhere. It is an interactive experience that mirrors how the Pilot\'s category-aware filing form works. To file a real grievance, visit an IFC or prajavani.cgg.gov.in.', 'మీరు నమోదు చేసేది ఏదీ ఏ ప్రభుత్వ పోర్టల్‌కూ సమర్పించబడదు లేదా ఎక్కడా భద్రపరచబడదు. ఇది పైలట్ యొక్క వర్గ-ఆధారిత దాఖలు ఫారం ఎలా పనిచేస్తుందో చూపే ఒక ఇంటరాక్టివ్ అనుభవం. నిజమైన ఫిర్యాదు కోసం IFCని లేదా prajavani.cgg.gov.inని సందర్శించండి.')}
+      </div>
+    </div>
+  );
+
   if (submitted) {
+    const today = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
+    const rcL = { padding: '10px 14px', borderBottom: `1px solid ${C.border}`, borderRight: `1px solid ${C.border}`, verticalAlign: 'top', width: '50%' };
+    const rcR = { padding: '10px 14px', borderBottom: `1px solid ${C.border}`, verticalAlign: 'top', width: '50%' };
+    const rcLbl = { fontFamily: "'Source Sans 3',sans-serif", fontSize: 10.5, fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase', color: C.textLight };
+    const rcVal = { fontFamily: "'Source Sans 3',sans-serif", fontSize: 13, color: C.text, marginTop: 3, wordBreak: 'break-word' };
+    const rows = [
+      [t('Grievance Number', 'ఫిర్యాదు సంఖ్య'), grievanceId, t('Submitted Date', 'సమర్పించిన తేదీ'), today],
+      [t('Complainant Name', 'ఫిర్యాదుదారు పేరు'), fields.name || '—', t('Mobile Number', 'మొబైల్ నంబర్'), fields.mobile || '—'],
+      [t('District', 'జిల్లా'), 'Adilabad', t('Department', 'శాఖ'), cat ? t(cat.dept.en, cat.dept.te) : '—'],
+      [t('Division', 'డివిజన్'), 'Adilabad', t('Mandal', 'మండలం'), fields.mandal || '—'],
+      [t('Village / Habitation', 'గ్రామం / ఆవాసం'), fields.village || '—', t('Grievance Type', 'ఫిర్యాదు రకం'), t('Individual Grievance', 'వ్యక్తిగత ఫిర్యాదు')],
+      [t('Category', 'క్యాటగిరీ'), cat ? t(cat.en, cat.te) : '—', t('Expected ATR', 'ఆశించిన ATR'), cat ? t(cat.sop.en, cat.sop.te) : '30 days'],
+    ];
     return (
       <div style={{ background: C.white, border: `1px solid ${C.border}`, borderRadius: 4, padding: 'clamp(20px, 4vw, 32px)' }}>
-        <div style={{ background: C.teal, borderRadius: 3, padding: '14px 20px', display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 18 }}>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={C.white} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          <span style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 14, fontWeight: 700, color: C.white }}>{t('Grievance registered', 'ఫిర్యాదు నమోదు అయింది')}</span>
+        <DemoBanner />
+        <div style={{ background: C.teal, borderRadius: 3, padding: '12px 18px', display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 18 }}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={C.white} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 14, fontWeight: 700, color: C.white }}>{t('Sample receipt generated', 'నమూనా రసీదు రూపొందించబడింది')}</span>
         </div>
-        <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 20, fontWeight: 700, color: C.navy, marginBottom: 6 }}>
-          {t('Your Grievance ID', 'మీ ఫిర్యాదు ఐడీ')}
+
+        {/* Pilot-style acknowledgement receipt */}
+        <div style={{ border: `1px solid ${C.border}`, borderRadius: 4, overflow: 'hidden', marginBottom: 16 }}>
+          <div style={{ background: C.navy, padding: '14px 18px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+            <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 16, fontWeight: 700, color: C.white }}>{t('Prajavani — Adilabad District', 'ప్రజావాణి — ఆదిలాబాద్ జిల్లా')}</div>
+            <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', background: C.amber, color: C.white, padding: '4px 10px', borderRadius: 2 }}>{t('SAMPLE · NOT VALID', 'నమూనా · చెల్లుబాటు కాదు')}</div>
+          </div>
+          <table style={{ width: '100%', borderCollapse: 'collapse', tableLayout: 'fixed' }}>
+            <tbody>
+              {rows.map((r, i) => (
+                <tr key={i}>
+                  <td style={rcL}><div style={rcLbl}>{r[0]}</div><div style={rcVal}>{r[1]}</div></td>
+                  <td style={rcR}><div style={rcLbl}>{r[2]}</div><div style={rcVal}>{r[3]}</div></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <div style={{ padding: '12px 16px', background: C.bg, fontFamily: "'Source Sans 3',sans-serif", fontSize: 11.5, color: C.textMid, lineHeight: 1.6 }}>
+            {t('In a real filing, your grievance would be forwarded to the designated GRO. You could attend the next Mandal Prajavani, and — if no Action Taken Report is received within the timeline — file a Collector Appeal.', 'నిజమైన దాఖలులో, మీ ఫిర్యాదు నిర్దేశిత GROకి పంపబడుతుంది. మీరు తదుపరి మండల ప్రజావాణికి హాజరు కావచ్చు, మరియు — గడువులోపు ATR అందకపోతే — కలెక్టర్ అప్పీలు దాఖలు చేయవచ్చు.')}
+          </div>
         </div>
-        <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 28, fontWeight: 700, color: C.amber, letterSpacing: '0.04em', marginBottom: 18, fontVariantNumeric: 'tabular-nums' }}>
-          {grievanceId}
-        </div>
+
         <div style={{ background: C.bg, padding: '16px 20px', borderRadius: 3, marginBottom: 14 }}>
           <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 12, fontWeight: 700, color: C.textLight, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 8 }}>
-            {t('Next steps', 'తదుపరి దశలు')}
+            {t('What happens next (in a real filing)', 'తదుపరి ఏమి జరుగుతుంది (నిజమైన దాఖలులో)')}
           </div>
           <ol style={{ paddingLeft: 18, margin: 0 }}>
             <li style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 13, color: C.textMid, lineHeight: 1.7, marginBottom: 4 }}>
-              {t('Dated receipt sent to your registered mobile via SMS.', 'మీ నమోదిత మొబైల్‌కు తేదీతో రసీదు SMS ద్వారా పంపబడింది.')}
+              {t('A dated receipt is sent to the registered mobile via SMS.', 'తేదీగల రసీదు నమోదిత మొబైల్‌కు SMS ద్వారా పంపబడుతుంది.')}
             </li>
             <li style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 13, color: C.textMid, lineHeight: 1.7, marginBottom: 4 }}>
-              {t('Auto-assigned to ', 'స్వయంచాలకంగా కేటాయించబడింది: ')} <strong>{cat ? t(cat.dept.en, cat.dept.te) : ''}</strong>{' — GRO'}
+              {t('The grievance is auto-assigned to the ', 'ఫిర్యాదు స్వయంచాలకంగా దీనికి కేటాయించబడుతుంది: ')}<strong>{cat ? t(cat.dept.en, cat.dept.te) : ''}</strong>{' GRO'}
             </li>
             <li style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 13, color: C.textMid, lineHeight: 1.7, marginBottom: 4 }}>
-              {t('Action Taken Report due in 30 days. Auto-escalation if not filed.', '30 రోజుల్లో ATR రావాలి. లేకపోతే స్వయంచాలకంగా పైకి మారుతుంది.')}
+              {t('An Action Taken Report is due within the SOP timeline.', 'SOP గడువులోపు ఒక ATR రావాలి.')}
             </li>
             <li style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 13, color: C.textMid, lineHeight: 1.7 }}>
-              {t('Track at ', 'ఇక్కడ ట్రాక్ చేయండి: ')}<code style={{ background: C.bgAlt, padding: '1px 6px', borderRadius: 2 }}>prajavani.cgg.gov.in</code>
+              {t('Status can be tracked at ', 'స్థితిని ఇక్కడ ట్రాక్ చేయవచ్చు: ')}<code style={{ background: C.bgAlt, padding: '1px 6px', borderRadius: 2 }}>prajavani.cgg.gov.in</code>
             </li>
           </ol>
         </div>
         <button onClick={reset} style={{ padding: '10px 22px', background: C.navy, color: C.white, border: 'none', borderRadius: 3, fontFamily: "'Source Sans 3',sans-serif", fontSize: 13, fontWeight: 600, cursor: 'pointer' }}>
-          {t('File another', 'మరొకటి దాఖలు చేయండి')}
+          {t('Try another category', 'మరో వర్గాన్ని ప్రయత్నించండి')}
         </button>
-        <div style={{ marginTop: 14, fontFamily: "'Source Sans 3',sans-serif", fontSize: 11, color: C.textLight, fontStyle: 'italic' }}>
-          {t('Demo only — this is a mock filing experience that mirrors the Pilot portal\'s dynamic-field logic.', 'డెమో మాత్రమే - ఇది పైలట్ పోర్టల్ యొక్క డైనమిక్ ఫీల్డ్ లాజిక్‌ను ప్రతిబింబించే నమూనా.')}
-        </div>
       </div>
     );
   }
 
   return (
     <div style={{ background: C.white, border: `1px solid ${C.border}`, borderRadius: 4, padding: 'clamp(18px, 4vw, 32px)' }}>
+
+      <DemoBanner />
 
       {/* Progress strip */}
       <div style={{ display: 'flex', gap: 4, marginBottom: 20 }}>

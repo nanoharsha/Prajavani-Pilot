@@ -81,7 +81,7 @@ window.TR = {
   'Across most states, 10–12 departments account for over 70% of complaints. The Police department frequently ranks in the top recipients — indicating digital portals function as an escalation route for police inaction.': 'చాలా రాష్ట్రాలలో, 10–12 శాఖలు 70% కంటే ఎక్కువ ఫిర్యాదులకు కారణం. పోలీసు శాఖ తరచుగా అగ్ర స్వీకర్తలలో ఉంటుంది — డిజిటల్ పోర్టల్‌లు పోలీసు నిష్క్రియత్వానికి ఎస్కలేషన్ మార్గంగా పనిచేస్తాయని సూచిస్తుంది.',
 
   'State grievance volumes (annual)': 'రాష్ట్రాల ఫిర్యాదు పరిమాణాలు (వార్షికం)',
-  'Source: state portal dashboards, 2024–25': 'మూలం: రాష్ట్ర పోర్టల్ డాష్‌బోర్డులు, 2024–25',
+  'Source: RTI Responses': 'మూలం: RTI స్పందనలు',
 
   // ─── SECTION 4: PILOT JOURNEY — timeline events ────────────────────────
   'Public hearing in Hyderabad on access to information and grievance redress. 200+ activists, academics, civil society participate. Twenty testimonies presented; eight resolutions agreed.': 'సమాచార ప్రాప్తి మరియు ఫిర్యాదు పరిష్కారంపై హైదరాబాద్‌లో బహిరంగ విచారణ. 200+ కార్యకర్తలు, విద్యావేత్తలు, పౌర సమాజం పాల్గొన్నారు. ఇరవై సాక్ష్యాలు సమర్పించబడ్డాయి; ఎనిమిది తీర్మానాలు ఆమోదించబడ్డాయి.',

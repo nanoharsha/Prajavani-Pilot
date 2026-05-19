@@ -200,7 +200,7 @@ function OtherStates() {
 
         <div style={{ marginBottom: 14, display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap' }}>
           <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 20, fontWeight: 700, color: C.navy }}>State grievance volumes (annual)</div>
-          <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 12, color: C.textLight }}>Source: state portal dashboards, 2024–25</div>
+          <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 12, color: C.textLight }}>{t('Source: RTI Responses')}</div>
         </div>
 
         <div style={{ overflowX: 'auto', border: `1px solid ${C.border}`, borderRadius: 4 }}>
