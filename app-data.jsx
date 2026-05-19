@@ -100,8 +100,8 @@ function Dashboard() {
               ].map((s, i) => (
                 <div key={i} style={{ ...SS.card, background: C.white }}>
                   <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 30, fontWeight: 700, color: C.navy }}>{s.value}</div>
-                  <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 13, color: C.textMid, marginTop: 4 }}>{s.label}</div>
-                  <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 11, color: C.textLight, marginTop: 2 }}>{s.note}</div>
+                  <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 13, color: C.textMid, marginTop: 4 }}>{t(s.label)}</div>
+                  <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 11, color: C.textLight, marginTop: 2 }}>{t(s.note)}</div>
                 </div>
               ))}
             </div>
