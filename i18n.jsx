@@ -27,10 +27,19 @@ function useLang() {
   return window.__lang;
 }
 
-// Inline ternary helper — call as t('English', 'Telugu')
+// Translation helper.
+//   Two-arg form:  t('English', 'తెలుగు')  — inline pair, used by existing code.
+//   One-arg form:  t('English')            — looks the string up in window.TR
+//                                            (the central dictionary in tr-te.jsx).
 // Reads current lang at render time (component must use useLang to subscribe to changes).
 function t(en, te) {
-  return window.__lang === 'te' && te ? te : en;
+  if (te !== undefined) return window.__lang === 'te' && te ? te : en;
+  if (window.__lang === 'te' && window.TR) {
+    const hit = window.TR[en];
+    if (hit) return hit;
+    if (window.__TR_WARN) console.warn('[i18n] missing Telugu for:', en);
+  }
+  return en;
 }
 
 // Number formatter — Indian style (12,110 ; 5,000)

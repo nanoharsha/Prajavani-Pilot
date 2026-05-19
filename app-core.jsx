@@ -121,21 +121,21 @@ function WhyChange() {
           <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: "'Source Sans 3',sans-serif", fontSize: 13 }}>
             <thead>
               <tr style={{ background: C.navy }}>
-                <th style={{ padding: '12px 14px', textAlign: 'left', color: C.white, fontWeight: 600, minWidth: 150 }}>Feature</th>
-                <th style={{ padding: '12px 14px', textAlign: 'left', color: 'rgba(255,255,255,0.8)', fontWeight: 600, minWidth: 180 }}>CPGRAMS<br /><span style={{ fontSize: 10, fontWeight: 400, color: 'rgba(255,255,255,0.5)' }}>National (Union Govt)</span></th>
-                <th style={{ padding: '12px 14px', textAlign: 'left', color: '#f4a261', fontWeight: 600, minWidth: 180 }}>CM Prajavani<br /><span style={{ fontSize: 10, fontWeight: 400, color: 'rgba(244,162,97,0.7)' }}>State — Hyderabad</span></th>
-                <th style={{ padding: '12px 14px', textAlign: 'left', color: '#f4a261', fontWeight: 600, minWidth: 180 }}>Collector Prajavani<br /><span style={{ fontSize: 10, fontWeight: 400, color: 'rgba(244,162,97,0.7)' }}>District — weekly</span></th>
-                <th style={{ padding: '12px 14px', textAlign: 'left', color: '#52d9d1', fontWeight: 600, minWidth: 200 }}>Adilabad Pilot<br /><span style={{ fontSize: 10, fontWeight: 400, color: 'rgba(82,217,209,0.7)' }}>Mandal — every Monday</span></th>
+                <th style={{ padding: '12px 14px', textAlign: 'left', color: C.white, fontWeight: 600, minWidth: 150 }}>{t('Feature')}</th>
+                <th style={{ padding: '12px 14px', textAlign: 'left', color: 'rgba(255,255,255,0.8)', fontWeight: 600, minWidth: 180 }}>CPGRAMS<br /><span style={{ fontSize: 10, fontWeight: 400, color: 'rgba(255,255,255,0.5)' }}>{t('National (Union Govt)')}</span></th>
+                <th style={{ padding: '12px 14px', textAlign: 'left', color: '#f4a261', fontWeight: 600, minWidth: 180 }}>{t('CM Prajavani')}<br /><span style={{ fontSize: 10, fontWeight: 400, color: 'rgba(244,162,97,0.7)' }}>{t('State — Hyderabad')}</span></th>
+                <th style={{ padding: '12px 14px', textAlign: 'left', color: '#f4a261', fontWeight: 600, minWidth: 180 }}>{t('Collector Prajavani')}<br /><span style={{ fontSize: 10, fontWeight: 400, color: 'rgba(244,162,97,0.7)' }}>{t('District — weekly')}</span></th>
+                <th style={{ padding: '12px 14px', textAlign: 'left', color: '#52d9d1', fontWeight: 600, minWidth: 200 }}>{t('Adilabad Pilot')}<br /><span style={{ fontSize: 10, fontWeight: 400, color: 'rgba(82,217,209,0.7)' }}>{t('Mandal — every Monday')}</span></th>
               </tr>
             </thead>
             <tbody>
               {features.map((f, i) =>
               <tr key={i} style={{ background: i % 2 === 0 ? C.white : C.bg, borderTop: `1px solid ${C.border}` }}>
-                  <td style={{ padding: '11px 14px', color: C.navy, fontWeight: 600 }}>{f.label}</td>
-                  <td style={{ padding: '11px 14px', color: C.textMid }}>{f.cpgrams}</td>
-                  <td style={{ padding: '11px 14px', color: C.textMid }}>{f.cm}</td>
-                  <td style={{ padding: '11px 14px', color: C.textMid }}>{f.coll}</td>
-                  <td style={{ padding: '11px 14px', color: C.teal }}>{f.pilot}</td>
+                  <td style={{ padding: '11px 14px', color: C.navy, fontWeight: 600 }}>{t(f.label)}</td>
+                  <td style={{ padding: '11px 14px', color: C.textMid }}>{t(f.cpgrams)}</td>
+                  <td style={{ padding: '11px 14px', color: C.textMid }}>{t(f.cm)}</td>
+                  <td style={{ padding: '11px 14px', color: C.textMid }}>{t(f.coll)}</td>
+                  <td style={{ padding: '11px 14px', color: C.teal }}>{t(f.pilot)}</td>
                 </tr>
               )}
             </tbody>
@@ -192,8 +192,8 @@ function OtherStates() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: 14, marginBottom: 40 }}>
           {insights.map((ins, i) =>
           <div key={i} style={{ ...SS.card, borderLeft: `3px solid ${C.teal}` }}>
-              <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 14, fontWeight: 700, color: C.navy, marginBottom: 6 }}>{ins.title}</div>
-              <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 13, color: C.textMid, lineHeight: 1.6 }}>{ins.body}</div>
+              <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 14, fontWeight: 700, color: C.navy, marginBottom: 6 }}>{t(ins.title)}</div>
+              <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 13, color: C.textMid, lineHeight: 1.6 }}>{t(ins.body)}</div>
             </div>
           )}
         </div>
@@ -301,7 +301,7 @@ function PilotJourney() {
                   <div style={{ width: 10, height: 10, borderRadius: '50%', background: ev.milestone ? C.amber : C.border, border: `2px solid ${ev.milestone ? C.amber : C.bgAlt}`, flexShrink: 0, marginTop: 4 }} />
                   {i < events.length - 1 && <div style={{ width: 2, flexGrow: 1, background: C.border, marginTop: 4, minHeight: 16 }} />}
                 </div>
-                <div style={{ paddingLeft: 14, paddingBottom: 8, flexGrow: 1, fontFamily: "'Source Sans 3',sans-serif", fontSize: 13, color: C.textMid, lineHeight: 1.6, background: ev.milestone ? `${C.amber}0e` : 'transparent', padding: ev.milestone ? '4px 12px 8px' : '2px 0 8px 14px', borderLeft: ev.milestone ? `3px solid ${C.amber}` : 'none', borderRadius: ev.milestone ? 3 : 0 }}>{ev.label}</div>
+                <div style={{ paddingLeft: 14, paddingBottom: 8, flexGrow: 1, fontFamily: "'Source Sans 3',sans-serif", fontSize: 13, color: C.textMid, lineHeight: 1.6, background: ev.milestone ? `${C.amber}0e` : 'transparent', padding: ev.milestone ? '4px 12px 8px' : '2px 0 8px 14px', borderLeft: ev.milestone ? `3px solid ${C.amber}` : 'none', borderRadius: ev.milestone ? 3 : 0 }}>{t(ev.label)}</div>
               </div>
             )}
           </div>
@@ -316,7 +316,7 @@ function PilotJourney() {
             {scale.map((s, i) =>
             <div key={i}>
                 <div style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 32, fontWeight: 700, color: C.amberLight }}>{s.num}</div>
-                <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 12, color: 'rgba(255,255,255,0.55)', marginTop: 4 }}>{s.label}</div>
+                <div style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 12, color: 'rgba(255,255,255,0.55)', marginTop: 4 }}>{t(s.label)}</div>
               </div>
             )}
           </div>
