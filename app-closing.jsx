@@ -238,6 +238,7 @@ function Resources() {
   useLang();
   const docs = [
     { title:'Full Pilot Report', desc:"Complete 88-page report — 'The Right to be Heard: Building a Decentralised Grievance Redress System in Telangana'. Published 19 May 2026.", type:'PDF', primary:true, link:'Reports/Prajavani-Pilot-Report-19May2026.pdf' },
+    { title:'G.O. Ms. No. 3 — Prajavani Programme', desc:'Institutionalization, Decentralization and Integration of Public Grievance Redressal Mechanism. Planning (V) Department, dated 30 April 2026.', type:'PDF', link:'Reports/GO-Ms-No-3-Prajavani-30Apr2026.pdf' },
     { title:'Ready Reckoner', desc:'Operational reckoner for the Adilabad Pilot — categories, SOPs, GROs.', type:'PDF', link:'https://docs.google.com/document/d/12fPodApQZtaWVfxT3zhLDoP5qp38N2dlpwHos1YY-1M/edit?usp=sharing' },
     { title:'Submission to PO, ITDA on IFR Grievances', desc:'Detailed analysis of Individual Forest Rights cases in the Pilot.', type:'DOC', link:'https://docs.google.com/document/d/1hyquCMv6iU4YR1MKlqXSA9ISSASFTpAiMm0KbrFbUEo/edit?usp=sharing' },
     { title:'Success Stories', desc:'In addition to the stories presented in the Full Pilot Report, documented success stories from the Pilot.', type:'DOC', link:'https://docs.google.com/document/d/1ErH37qsPm3avzarYbzROBFkO6ag3OyYHOAL8xQJk9Kc/edit?usp=sharing' },
@@ -245,6 +246,7 @@ function Resources() {
     { title:'Collector Appeal & Positive Stories', desc:'Collector Appeal, Decentralized CM Prajavani Pilot in Adilabad District (Jan 2025 – ongoing) and Positive Stories from the Collector Appeal (12 September 2025).', type:'DOC', link:'https://docs.google.com/document/d/1CcvvY1eptMgWVNfDHIMjt_rQ8YeYjuTlchlpNTkutyI/edit?usp=sharing' },
     { title:'District Pilot of Prajavani & Opportunities for Scaling-up', desc:'Adilabad, January–February 2025 Report, prepared in April 2025.', type:'DOC', link:'https://drive.google.com/drive/u/0/folders/1yCsPMwLG3_GpWDZ4FDYu6g1ksBuFik15' },
     { title:'Letter from SNO Prajavani to Director, CGG', desc:'On development of the web portal for the Prajavani Pilot (encl. letter from District Collector, Adilabad to SNO Prajavani).', type:'PDF', link:'https://drive.google.com/file/d/14raP-0uX0BUOhcpIfCTWu14b8qrRA0C9/view?usp=sharing' },
+    { title:'Standard Operating Procedures (SOPs)', desc:'Compiled SOPs developed during the Adilabad Pilot across grievance categories and Line Departments.', type:'PDF', link:'Reports/Prajavani-SOPs.pdf' },
   ];
 
   return (

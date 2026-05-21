@@ -377,6 +377,7 @@ function WayForward() {
                 {t('"...to enhance responsiveness, transparency, accountability and timely empathetic citizen-centric service delivery in the public grievance redressal system."', '"...ప్రజా ఫిర్యాదు పరిష్కార వ్యవస్థలో ప్రతిస్పందన, పారదర్శకత, జవాబుదారీతనం మరియు సకాలిక సానుభూతిగల పౌర-కేంద్రీకృత సేవా బట్వాడాను పెంచడానికి."')}
               </div>
             </div>
+            <a href="Reports/GO-Ms-No-3-Prajavani-30Apr2026.pdf" target="_blank" rel="noopener noreferrer" download style={{ fontFamily: "'Source Sans 3',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: C.navy, background: C.amberLight, padding: '9px 14px', borderRadius: 3, textDecoration: 'none', whiteSpace: 'nowrap', alignSelf: 'flex-start' }}>{t('Download G.O. (PDF)', 'G.O. డౌన్‌లోడ్ (PDF)')} →</a>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 14, marginBottom: 28 }}>
