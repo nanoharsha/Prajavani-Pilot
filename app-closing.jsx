@@ -7,14 +7,14 @@ function Documentary() {
   return (
     <section id="documentary" data-screen-label="14 Documentary" style={SS.section(C.navy)}>
       <div style={SS.container}>
-        <div style={{ display:'grid', gridTemplateColumns:'1fr 1.2fr', gap:48, alignItems:'center' }}>
+        <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(300px, 1fr))', gap:48, alignItems:'center' }}>
           <div>
-            <div style={{ fontFamily:"'Source Sans 3',sans-serif", fontSize:11, fontWeight:700, letterSpacing:'0.15em', textTransform:'uppercase', color:C.amberLight, marginBottom:12 }}>Forthcoming</div>
-            <h2 style={{ fontFamily:"'Libre Baskerville',serif", fontSize:32, fontWeight:700, color:C.white, lineHeight:1.2, marginBottom:16 }}>Documentary Film</h2>
+            <div style={{ fontFamily:"'Source Sans 3',sans-serif", fontSize:11, fontWeight:700, letterSpacing:'0.15em', textTransform:'uppercase', color:C.amberLight, marginBottom:12 }}>{t('Now streaming', 'ఇప్పుడు ప్రసారం')}</div>
+            <h2 style={{ fontFamily:"'Libre Baskerville',serif", fontSize:32, fontWeight:700, color:C.white, lineHeight:1.2, marginBottom:16 }}>{t('Documentary Film', 'డాక్యుమెంటరీ చిత్రం')}</h2>
             <p style={{ fontFamily:"'Source Sans 3',sans-serif", fontSize:17, color:'rgba(255,255,255,0.65)', lineHeight:1.7, marginBottom:24 }}>
-              A documentary on the Adilabad Prajavani pilot — the citizens behind the grievances, the officers who responded, and what happens when accountability becomes a public act.
+              {t('A documentary on the Adilabad Prajavani pilot — the citizens behind the grievances, the officers who responded, and what happens when accountability becomes a public act.', 'ఆదిలాబాద్ ప్రజావాణి పైలట్‌పై ఒక డాక్యుమెంటరీ — ఫిర్యాదుల వెనుక ఉన్న పౌరులు, ప్రతిస్పందించిన అధికారులు, మరియు జవాబుదారీతనం ఒక బహిరంగ చర్యగా మారినప్పుడు ఏం జరుగుతుందో.')}
             </p>
-            <div style={{ fontFamily:"'Source Sans 3',sans-serif", fontSize:14, color:'rgba(255,255,255,0.4)', marginBottom:8 }}>Produced by</div>
+            <div style={{ fontFamily:"'Source Sans 3',sans-serif", fontSize:14, color:'rgba(255,255,255,0.4)', marginBottom:8 }}>{t('Produced by', 'నిర్మాత')}</div>
             <a href="https://vimeo.com/dilmayafilms" target="_blank" rel="noopener noreferrer" style={{ fontFamily:"'Libre Baskerville',serif", fontSize:18, fontWeight:700, color:C.amberLight, textDecoration:'none', display:'inline-flex', alignItems:'center', gap:8 }}>
               Dilmaya Films
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -22,12 +22,14 @@ function Documentary() {
             <div style={{ fontFamily:"'Source Sans 3',sans-serif", fontSize:13, color:'rgba(255,255,255,0.3)', marginTop:6 }}>vimeo.com/dilmayafilms</div>
           </div>
 
-          <div style={{ background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.1)', borderRadius:6, aspectRatio:'16/9', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:14 }}>
-            <div style={{ width:64, height:64, background:'rgba(196,125,46,0.15)', borderRadius:'50%', display:'flex', alignItems:'center', justifyContent:'center', cursor:'pointer', transition:'all 0.2s' }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="#f0a84a"><polygon points="6 4 20 12 6 20"/></svg>
-            </div>
-            <div style={{ fontFamily:"'Source Sans 3',sans-serif", fontSize:14, color:'rgba(255,255,255,0.55)', textAlign:'center' }}>Documentary in production</div>
-            <div style={{ fontFamily:"'Source Sans 3',sans-serif", fontSize:11, color:'rgba(255,255,255,0.25)', textAlign:'center' }}>Produced by Dilmaya Films</div>
+          <div style={{ position:'relative', borderRadius:6, overflow:'hidden', aspectRatio:'16/9', background:'#000', boxShadow:'0 10px 40px rgba(0,0,0,0.4)' }}>
+            <iframe
+              src="https://player.vimeo.com/video/1193479823?h=07fbef35c3&title=0&byline=0&portrait=0"
+              style={{ position:'absolute', inset:0, width:'100%', height:'100%', border:0 }}
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+              title="Documentary — Stories from Adilabad"
+            />
           </div>
         </div>
       </div>
