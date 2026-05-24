@@ -25,6 +25,7 @@ function GrievanceForm() {
       en: 'Gas Subsidy (Mahalaxmi)', te: 'గ్యాస్ సబ్సిడీ (మహాలక్ష్మి)',
       dept: { en: 'Consumer Affairs, F&CS', te: 'వినియోగదారుల వ్యవహారాలు' },
       sop: { en: 'SOP-12 · 30 days', te: 'ఎస్ఓపీ-12 · 30 రోజులు' },
+      gro: { en: 'Mandal Parishad Development Officer (MPDO)', te: 'మండల పరిషత్ అభివృద్ధి అధికారి (MPDO)' },
       fields: [
         { key: 'lpg', en: 'LPG Consumer Number', te: 'LPG వినియోగదారుల నంబర్', placeholder: '17-digit Consumer ID', required: true },
         { key: 'agency', en: 'Gas Distributor / Agency', te: 'గ్యాస్ ఏజెన్సీ', placeholder: 'e.g. Bharat Gas — Adilabad' },
@@ -36,6 +37,7 @@ function GrievanceForm() {
       en: 'Gruhajyothi (200 free units)', te: 'గృహజ్యోతి (200 ఉచిత యూనిట్లు)',
       dept: { en: 'Energy Department', te: 'ఇంధన శాఖ' },
       sop: { en: 'SOP-08 · 30 days', te: 'ఎస్ఓపీ-08 · 30 రోజులు' },
+      gro: { en: 'Assistant Engineer (AE), Electricity Dept', te: 'సహాయ ఇంజనీర్ (AE), విద్యుత్ శాఖ' },
       fields: [
         { key: 'usc', en: 'USC Number (Service Connection)', te: 'USC నంబర్', placeholder: '13-digit USC', required: true },
         { key: 'aadhaar_last4', en: 'Last 4 digits of Aadhaar', te: 'ఆధార్ చివరి 4 అంకెలు', placeholder: 'XXXX', required: true },
@@ -46,6 +48,7 @@ function GrievanceForm() {
       en: 'MGNREGA — Job Card', te: 'మహాత్మాగాంధీ NREGA - జాబ్ కార్డ్',
       dept: { en: 'Panchayat Raj & RD', te: 'పంచాయితీ రాజ్ & RD' },
       sop: { en: 'SOP-04 · 15 days (statutory)', te: 'ఎస్ఓపీ-04 · 15 రోజులు (చట్టబద్ధం)' },
+      gro: { en: 'Mandal Parishad Development Officer (MPDO)', te: 'మండల పరిషత్ అభివృద్ధి అధికారి (MPDO)' },
       fields: [
         { key: 'jobcard', en: 'Job Card Number', te: 'జాబ్ కార్డ్ నంబర్', placeholder: 'TS-..-..-..-..', required: true },
         { key: 'panchayat', en: 'Gram Panchayat', te: 'గ్రామ పంచాయితీ', required: true },
@@ -62,6 +65,7 @@ function GrievanceForm() {
       en: 'PM Kisan / Rythu Bharosa', te: 'పీఎం కిసాన్ / రైతు భరోసా',
       dept: { en: 'Agriculture', te: 'వ్యవసాయం' },
       sop: { en: 'SOP-15 · 30 days', te: 'ఎస్ఓపీ-15 · 30 రోజులు' },
+      gro: { en: 'Mandal Agricultural Officer (MAO)', te: 'మండల వ్యవసాయ అధికారి (MAO)' },
       fields: [
         { key: 'ppb', en: 'PPB Number (Pattadar Passbook)', te: 'పీపీబీ నంబర్', placeholder: 'Pattadar Passbook ID', required: true },
         { key: 'survey', en: 'Survey Number(s)', te: 'సర్వే నంబర్(లు)', placeholder: 'e.g. 124/A, 125' },
@@ -78,6 +82,7 @@ function GrievanceForm() {
       en: 'Pension (Old age / Widow / Disability)', te: 'పెన్షన్ (వృద్ధాప్య / వితంతు / వైకల్యం)',
       dept: { en: 'Panchayat Raj & RD', te: 'పంచాయితీ రాజ్ & RD' },
       sop: { en: 'SOP-02 · 30 days', te: 'ఎస్ఓపీ-02 · 30 రోజులు' },
+      gro: { en: 'Mandal Parishad Development Officer (MPDO)', te: 'మండల పరిషత్ అభివృద్ధి అధికారి (MPDO)' },
       fields: [
         { key: 'pension_id', en: 'Pension ID (if assigned)', te: 'పెన్షన్ ఐడీ (ఉంటే)', placeholder: 'leave blank if not assigned' },
         { key: 'type', en: 'Pension type', te: 'పెన్షన్ రకం', type: 'select',
@@ -101,6 +106,7 @@ function GrievanceForm() {
       en: 'Revenue / Land Issue', te: 'రెవెన్యూ / భూ సమస్య',
       dept: { en: 'Revenue', te: 'రెవెన్యూ' },
       sop: { en: 'SOP-09 · 45 days', te: 'ఎస్ఓపీ-09 · 45 రోజులు' },
+      gro: { en: 'Tahsildar / Mandal Revenue Officer', te: 'తహసీల్దార్ / మండల రెవెన్యూ అధికారి' },
       fields: [
         { key: 'ppb', en: 'Pattadar Passbook Number', te: 'పీపీబీ నంబర్' },
         { key: 'survey', en: 'Survey Number', te: 'సర్వే నంబర్', required: true },
@@ -119,6 +125,7 @@ function GrievanceForm() {
       en: 'Forest Rights (IFR / RoFR)', te: 'అటవీ హక్కులు (IFR / RoFR)',
       dept: { en: 'Tribal Welfare', te: 'గిరిజన సంక్షేమం' },
       sop: { en: 'SOP-11 · 60 days', te: 'ఎస్ఓపీ-11 · 60 రోజులు' },
+      gro: { en: 'Deputy Director, ITDA', te: 'డిప్యూటీ డైరెక్టర్, ITDA' },
       fields: [
         { key: 'claim', en: 'Claim Number (if filed)', te: 'క్లెయిం నంబర్' },
         { key: 'village', en: 'Village & Habitation', te: 'గ్రామం & ఆవాసం', required: true },
@@ -136,6 +143,7 @@ function GrievanceForm() {
       en: 'Ration Card', te: 'రేషన్ కార్డ్',
       dept: { en: 'F&CS', te: 'వినియోగదారుల వ్యవహారాలు' },
       sop: { en: 'SOP-07 · 30 days', te: 'ఎస్ఓపీ-07 · 30 రోజులు' },
+      gro: { en: 'Tahsildar / Mandal Revenue Officer', te: 'తహసీల్దార్ / మండల రెవెన్యూ అధికారి' },
       fields: [
         { key: 'ration_no', en: 'Existing Ration Card Number (if any)', te: 'రేషన్ కార్డ్ నంబర్' },
         { key: 'request', en: 'Request type', te: 'అభ్యర్థన రకం', type: 'select',
@@ -152,6 +160,7 @@ function GrievanceForm() {
       en: 'Other / Information request', te: 'ఇతర / సమాచార అభ్యర్థన',
       dept: { en: 'Routed by Presiding Officer', te: 'అధ్యక్ష అధికారి ద్వారా' },
       sop: { en: '30 days (default)', te: '30 రోజులు (డిఫాల్ట్)' },
+      gro: { en: 'Routed by Presiding Officer', te: 'అధ్యక్ష అధికారి ద్వారా కేటాయింపు' },
       fields: [
         { key: 'department', en: 'Concerned department (if known)', te: 'సంబంధిత శాఖ' },
       ]
@@ -203,6 +212,12 @@ function GrievanceForm() {
 
   if (submitted) {
     const today = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
+    // Mandal Prajavani is held every Monday — show the next one
+    const nextMonday = (() => {
+      const d = new Date();
+      d.setDate(d.getDate() + (((8 - d.getDay()) % 7) || 7));
+      return d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
+    })();
     const rcL = { padding: '10px 14px', borderBottom: `1px solid ${C.border}`, borderRight: `1px solid ${C.border}`, verticalAlign: 'top', width: '50%' };
     const rcR = { padding: '10px 14px', borderBottom: `1px solid ${C.border}`, verticalAlign: 'top', width: '50%' };
     const rcLbl = { fontFamily: "'Source Sans 3',sans-serif", fontSize: 10.5, fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase', color: C.textLight };
@@ -210,10 +225,11 @@ function GrievanceForm() {
     const rows = [
       [t('Grievance Number', 'ఫిర్యాదు సంఖ్య'), grievanceId, t('Submitted Date', 'సమర్పించిన తేదీ'), today],
       [t('Complainant Name', 'ఫిర్యాదుదారు పేరు'), fields.name || '—', t('Mobile Number', 'మొబైల్ నంబర్'), fields.mobile || '—'],
-      [t('District', 'జిల్లా'), 'Adilabad', t('Department', 'శాఖ'), cat ? t(cat.dept.en, cat.dept.te) : '—'],
-      [t('Division', 'డివిజన్'), 'Adilabad', t('Mandal', 'మండలం'), fields.mandal || '—'],
+      [t('District', 'జిల్లా'), 'Adilabad', t('Mandal', 'మండలం'), fields.mandal || '—'],
       [t('Village / Habitation', 'గ్రామం / ఆవాసం'), fields.village || '—', t('Grievance Type', 'ఫిర్యాదు రకం'), t('Individual Grievance', 'వ్యక్తిగత ఫిర్యాదు')],
-      [t('Category', 'క్యాటగిరీ'), cat ? t(cat.en, cat.te) : '—', t('Expected ATR', 'ఆశించిన ATR'), cat ? t(cat.sop.en, cat.sop.te) : '30 days'],
+      [t('Category', 'క్యాటగిరీ'), cat ? t(cat.en, cat.te) : '—', t('Department', 'శాఖ'), cat ? t(cat.dept.en, cat.dept.te) : '—'],
+      [t('Assigned GRO', 'కేటాయించిన GRO'), cat ? t(cat.gro.en, cat.gro.te) : '—', t('Expected ATR', 'ఆశించిన ATR'), cat ? t(cat.sop.en, cat.sop.te) : '30 days'],
+      [t('Next Mandal Prajavani', 'తదుపరి మండల ప్రజావాణి'), nextMonday + t(' (Monday)', ' (సోమవారం)'), t('Filing channel', 'దాఖలు మాధ్యమం'), t('Online (sample)', 'ఆన్‌లైన్ (నమూనా)')],
     ];
     return (
       <div style={{ background: C.white, border: `1px solid ${C.border}`, borderRadius: 4, padding: 'clamp(20px, 4vw, 32px)' }}>
